@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Post 4 — Prova Social · Fluxia Business</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #1a1a1a; display: flex; flex-direction: column; align-items: center; padding: 2rem; gap: 2rem; }
+  .instructions { color: #666; font-size: 13px; text-align: center; background: #1a1a1a; padding: .75rem 1.5rem; border-radius: 8px; border: 1px solid #2a2a2a; }
+  .slide { width: 1080px; height: 1080px; background: #0f1a14; position: relative; overflow: hidden; }
+  .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(29,158,117,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(29,158,117,0.05) 1px, transparent 1px); background-size: 90px 90px; }
+  .accent-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #1D9E75; }
+  .top-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: #1D9E75; }
+  .logo { position: absolute; top: 60px; left: 80px; font-size: 13px; font-weight: 500; letter-spacing: 0.2em; color: #1D9E75; text-transform: uppercase; }
+  .slide-num { position: absolute; top: 60px; right: 80px; font-size: 13px; color: #2a3d2e; letter-spacing: 0.1em; }
+  .bottom-line { position: absolute; bottom: 80px; left: 80px; right: 80px; height: 1px; background: rgba(29,158,117,0.2); }
+  .bottom-tag { position: absolute; bottom: 55px; left: 80px; font-size: 11px; letter-spacing: 0.15em; color: #2a4a32; text-transform: uppercase; }
+
+  /* SLIDE 1 — GANCHO */
+  .s1-content { position: absolute; top: 50%; left: 80px; right: 80px; transform: translateY(-52%); }
+  .s1-eyebrow { font-size: 14px; font-weight: 500; letter-spacing: 0.15em; color: #1D9E75; text-transform: uppercase; margin-bottom: 2rem; }
+  .s1-title { font-family: 'DM Serif Display', serif; font-size: 86px; line-height: 1.05; color: #f7f4ef; letter-spacing: -0.02em; margin-bottom: 2.5rem; }
+  .s1-title em { font-style: italic; color: #1D9E75; }
+  .s1-sub { font-size: 24px; font-weight: 300; color: #8a9e90; line-height: 1.5; }
+
+  /* SLIDE 2 — CONTA */
+  .s2-content { position: absolute; top: 130px; left: 80px; right: 80px; }
+  .s2-title { font-family: 'DM Serif Display', serif; font-size: 46px; color: #f7f4ef; margin-bottom: 3rem; line-height: 1.2; }
+  .s2-row { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 0; border-bottom: 1px solid rgba(29,158,117,0.1); }
+  .s2-task { font-size: 24px; font-weight: 300; color: #8a9e90; }
+  .s2-hours { font-family: 'DM Serif Display', serif; font-size: 48px; color: #3a5a40; letter-spacing: -0.02em; }
+  .s2-hours span { font-size: 20px; color: #2a3d2e; font-family: 'DM Sans', sans-serif; font-weight: 300; }
+  .s2-total { margin-top: 2rem; padding: 2rem; background: rgba(29,158,117,0.08); border-left: 4px solid #1D9E75; display: flex; justify-content: space-between; align-items: center; }
+  .s2-total-label { font-size: 20px; font-weight: 500; color: #c8d8cc; }
+  .s2-total-num { font-family: 'DM Serif Display', serif; font-size: 64px; color: #1D9E75; letter-spacing: -0.02em; }
+  .s2-total-unit { font-size: 20px; color: #1D9E75; font-weight: 300; }
+
+  /* SLIDE 3 — IMPACTO */
+  .s3-content { position: absolute; top: 50%; left: 80px; right: 80px; transform: translateY(-52%); text-align: center; }
+  .s3-number { font-family: 'DM Serif Display', serif; font-size: 200px; line-height: 1; color: #1D9E75; letter-spacing: -0.04em; margin-bottom: 1rem; }
+  .s3-unit { font-size: 36px; font-weight: 300; color: #2a7a52; margin-bottom: 2rem; letter-spacing: 0.05em; }
+  .s3-desc { font-family: 'DM Serif Display', serif; font-size: 48px; color: #f7f4ef; line-height: 1.2; }
+  .s3-desc em { font-style: italic; color: #8a9e90; }
+
+  /* SLIDE 4 — SOLUÇÃO */
+  .s4-content { position: absolute; top: 50%; left: 80px; right: 80px; transform: translateY(-52%); }
+  .s4-badge { display: inline-block; background: rgba(29,158,117,0.15); color: #1D9E75; font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 8px 20px; margin-bottom: 2.5rem; }
+  .s4-title { font-family: 'DM Serif Display', serif; font-size: 72px; color: #f7f4ef; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 2.5rem; }
+  .s4-title em { font-style: italic; color: #1D9E75; }
+  .s4-items { display: flex; flex-direction: column; gap: 1.25rem; }
+  .s4-item { display: flex; align-items: center; gap: 20px; }
+  .s4-dot { width: 8px; height: 8px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; }
+  .s4-text { font-size: 26px; font-weight: 300; color: #8a9e90; }
+  .s4-text strong { color: #c8d8cc; font-weight: 400; }
+
+  /* SLIDE 5 — CTA */
+  .s5-content { position: absolute; top: 50%; left: 80px; right: 80px; transform: translateY(-50%); text-align: center; }
+  .s5-title { font-family: 'DM Serif Display', serif; font-size: 72px; color: #f7f4ef; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 2rem; }
+  .s5-title em { font-style: italic; color: #1D9E75; }
+  .s5-sub { font-size: 24px; font-weight: 300; color: #8a9e90; margin-bottom: 3.5rem; line-height: 1.5; }
+  .s5-cta { display: inline-block; background: #1D9E75; color: #0f1a14; font-size: 18px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 1.25rem 3rem; }
+  .s5-url { margin-top: 2rem; font-size: 16px; color: #2a4a32; }
+</style>
+</head>
+<body>
+<div class="instructions">Post 4 — Prova Social · 5 slides · Tire print de cada slide</div>
+
+<!-- SLIDE 1 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">01 / 05</div>
+  <div class="s1-content">
+    <div class="s1-eyebrow">Fiz essa conta com donos de pequenos negócios</div>
+    <div class="s1-title">Você perde <em>quanto tempo</em> por semana?</div>
+    <div class="s1-sub">Os números vão te surpreender. Deslize para ver. 👇</div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">02 / 05</div>
+  <div class="s2-content">
+    <div class="s2-title">Horas perdidas por semana:</div>
+    <div class="s2-row">
+      <span class="s2-task">Mensagens repetitivas</span>
+      <span class="s2-hours">5 <span>h/sem</span></span>
+    </div>
+    <div class="s2-row">
+      <span class="s2-task">Conteúdo para redes</span>
+      <span class="s2-hours">4 <span>h/sem</span></span>
+    </div>
+    <div class="s2-row">
+      <span class="s2-task">Relatórios manuais</span>
+      <span class="s2-hours">3 <span>h/sem</span></span>
+    </div>
+    <div class="s2-total">
+      <span class="s2-total-label">Total por semana:</span>
+      <div style="text-align:right">
+        <div class="s2-total-num">12h</div>
+        <div class="s2-total-unit">toda semana</div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">03 / 05</div>
+  <div class="s3-content">
+    <div class="s3-number">48h</div>
+    <div class="s3-unit">perdidas por mês</div>
+    <div class="s3-desc">São <em>6 dias inteiros</em> de trabalho jogados fora todo mês.</div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">04 / 05</div>
+  <div class="s4-content">
+    <div class="s4-badge">A boa notícia</div>
+    <div class="s4-title">Automação resolve <em>tudo isso.</em></div>
+    <div class="s4-items">
+      <div class="s4-item"><div class="s4-dot"></div><div class="s4-text">Chatbot responde as mensagens <strong>automaticamente</strong></div></div>
+      <div class="s4-item"><div class="s4-dot"></div><div class="s4-text">IA gera e agenda <strong>todo o conteúdo</strong></div></div>
+      <div class="s4-item"><div class="s4-dot"></div><div class="s4-text">Sistema monta e envia <strong>os relatórios sozinho</strong></div></div>
+      <div class="s4-item"><div class="s4-dot"></div><div class="s4-text">Implementação em <strong>7 dias úteis</strong></div></div>
+    </div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">05 / 05</div>
+  <div class="s5-content">
+    <div class="s5-title">Recupere suas <em>48 horas</em> por mês.</div>
+    <div class="s5-sub">Veja o que posso automatizar no seu negócio — sem reunião, sem complicação.</div>
+    <div class="s5-cta">Link na bio 👆</div>
+    <div class="s5-url">fluxiabusiness.netlify.app</div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+</body>
+</html>

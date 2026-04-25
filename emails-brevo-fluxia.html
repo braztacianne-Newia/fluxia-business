@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emails Brevo — Agência FLUXIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#f7f4ef;color:#0f0e0d;font-size:15px;line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding:2rem 1.5rem}
+h1{font-family:'DM Serif Display',serif;font-size:2rem;color:#0f0e0d;margin-bottom:.35rem}
+.subtitle{font-size:13px;color:#7a7773;margin-bottom:2.5rem}
+.email-card{background:#fff;border:0.5px solid #ede9e2;border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
+.email-header{padding:1rem 1.5rem;background:#f7f4ef;border-bottom:0.5px solid #ede9e2;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.email-title{font-size:14px;font-weight:500;color:#0f0e0d}
+.email-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pill{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px}
+.pill-teal{background:#E1F5EE;color:#085041}
+.pill-gray{background:#f1efe8;color:#5f5e5a;border:0.5px solid #d3d1c7}
+.email-body{padding:1.5rem}
+.subject{font-size:12px;font-weight:500;color:#7a7773;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem}
+.subject-line{font-size:14px;font-weight:500;color:#0f0e0d;background:#f7f4ef;border:0.5px solid #ede9e2;border-radius:6px;padding:.6rem .875rem;margin-bottom:1.25rem;font-family:monospace}
+.copy-btn{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;background:#E1F5EE;color:#085041;border:none;cursor:pointer;float:right;margin-top:-2px;font-family:'DM Sans',sans-serif;transition:background .15s}
+.copy-btn:hover{background:#9FE1CB}
+.email-text{font-size:13px;color:#3a3835;line-height:1.85;background:#f7f4ef;border-radius:8px;padding:1.25rem 1.5rem;border-left:3px solid #1D9E75;white-space:pre-line;font-family:monospace}
+.tip{font-size:12px;color:#7a7773;margin-top:1rem;line-height:1.55;font-style:italic;padding:.75rem 1rem;background:#faeeda;border-radius:6px;border-left:3px solid #BA7517}
+.divider{height:0.5px;background:#ede9e2;margin:1.5rem 0}
+.instruction{font-size:13px;color:#3a3835;margin-bottom:1.25rem;line-height:1.6;background:#eeedfe;border-radius:6px;padding:.875rem 1rem;border-left:3px solid #534AB7}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>5 Emails — Agência FLUXIA</h1>
+<p class="subtitle">Copie cada texto no template correspondente dentro do Brevo · Workflow: Leads Agência FLUXIA</p>
+
+<div class="instruction">
+  Como usar: abra cada template no Brevo → clique em editar → delete o conteúdo padrão → cole o texto abaixo no bloco de texto. No campo "Assunto" do template, cole o assunto indicado.
+</div>
+
+<!-- EMAIL 1 -->
+<div class="email-card">
+  <div class="email-header">
+    <span class="email-title">Email 1 — Boas-vindas</span>
+    <div class="email-meta">
+      <span class="pill pill-teal">Envio imediato</span>
+      <span class="pill pill-gray">Template: Email 1 - Boas-vindas</span>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="subject">Assunto do email</div>
+    <div class="subject-line">Recebi seu interesse, {{ contact.FIRSTNAME }} — o que vem a seguir</div>
+
+    <div class="subject" style="margin-top:1rem">Corpo do email</div>
+    <button class="copy-btn" onclick="copyText('e1')">Copiar texto</button>
+    <div class="email-text" id="e1">Oi, {{ contact.FIRSTNAME }}!
+
+Recebi suas informações e fico feliz que você tenha chegado até aqui.
+
+Nos próximos dias vou te mostrar exatamente como a inteligência artificial pode liberar horas do seu dia — com exemplos reais de negócios parecidos com o seu.
+
+Amanhã você recebe o primeiro: o caso de uma clínica que parou de perder 2 horas por dia só com uma mudança simples.
+
+Até lá!
+
+—
+Agência FLUXIA
+Automação com IA para pequenos negócios</div>
+
+    <div class="tip">Objetivo: criar expectativa e mostrar que tem conteúdo de valor chegando. Não venda nada aqui — deixe o lead curioso para o próximo email.</div>
+  </div>
+</div>
+
+<!-- EMAIL 2 -->
+<div class="email-card">
+  <div class="email-header">
+    <span class="email-title">Email 2 — Case real</span>
+    <div class="email-meta">
+      <span class="pill pill-teal">1 dia depois</span>
+      <span class="pill pill-gray">Template: Email 2 - Case</span>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="subject">Assunto do email</div>
+    <div class="subject-line">Como uma clínica parou de perder 2h por dia (sem contratar ninguém)</div>
+
+    <div class="subject" style="margin-top:1rem">Corpo do email</div>
+    <button class="copy-btn" onclick="copyText('e2')">Copiar texto</button>
+    <div class="email-text" id="e2">Oi, {{ contact.FIRSTNAME }}!
+
+Uma clínica de estética aqui em São Paulo gastava cerca de 2 horas todo dia criando posts para o Instagram.
+
+A dona fazia tudo na mão: pensava no tema, escrevia a legenda, escolhia a imagem, programava o horário. Todo. Santo. Dia.
+
+Hoje ela gasta 20 minutos por semana — e o conteúdo ficou mais consistente do que antes.
+
+O que mudou foi um fluxo simples com IA que:
+— puxa os serviços e novidades do mês
+— gera os textos automaticamente
+— programa os posts direto na plataforma
+
+Nenhuma linha de código. Nenhum técnico contratado.
+
+Essa é a diferença entre trabalhar no negócio e trabalhar com o negócio.
+
+Nos próximos dias te mostro mais — e como isso se aplica ao seu caso.
+
+—
+Agência FLUXIA
+Automação com IA para pequenos negócios</div>
+
+    <div class="tip">Objetivo: mostrar resultado concreto com um caso específico. Números reais (2h → 20min) criam mais credibilidade do que qualquer promessa genérica.</div>
+  </div>
+</div>
+
+<!-- EMAIL 3 -->
+<div class="email-card">
+  <div class="email-header">
+    <span class="email-title">Email 3 — A dor</span>
+    <div class="email-meta">
+      <span class="pill pill-teal">3 dias depois</span>
+      <span class="pill pill-gray">Template: Email 3 - Dor</span>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="subject">Assunto do email</div>
+    <div class="subject-line">Quanto tempo você está perdendo por semana?</div>
+
+    <div class="subject" style="margin-top:1rem">Corpo do email</div>
+    <button class="copy-btn" onclick="copyText('e3')">Copiar texto</button>
+    <div class="email-text" id="e3">Oi, {{ contact.FIRSTNAME }}!
+
+Fiz essa conta com os últimos clientes que atendi. Antes de começar a trabalhar juntos, eles perdiam em média:
+
+— Responder mensagens repetitivas no WhatsApp: 5h/semana
+— Criar conteúdo para redes sociais: 4h/semana
+— Montar relatórios e planilhas: 3h/semana
+— Follow-up de clientes e leads: 2h/semana
+
+São 14 horas por semana. Quase dois dias inteiros.
+
+Não porque eram desorganizados — mas porque essas tarefas simplesmente tomam tempo quando feitas manualmente.
+
+Na maioria dos casos consigo automatizar pelo menos 10 dessas 14 horas.
+
+Isso não significa que você vai trabalhar menos — significa que você vai usar esse tempo para o que realmente importa: crescer o negócio, atender melhor, ou simplesmente descansar.
+
+No próximo email te conto exatamente como funciona o processo — sem reunião, sem complicação.
+
+—
+Agência FLUXIA
+Automação com IA para pequenos negócios</div>
+
+    <div class="tip">Objetivo: fazer o lead calcular a própria dor. Quando ele faz a conta mentalmente, a decisão de contratar já está quase tomada antes de você oferecer qualquer coisa.</div>
+  </div>
+</div>
+
+<!-- EMAIL 4 -->
+<div class="email-card">
+  <div class="email-header">
+    <span class="email-title">Email 4 — Como funciona</span>
+    <div class="email-meta">
+      <span class="pill pill-teal">5 dias depois</span>
+      <span class="pill pill-gray">Template: Email 4 - Processo</span>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="subject">Assunto do email</div>
+    <div class="subject-line">Sem reunião, sem contrato longo — veja como funciona</div>
+
+    <div class="subject" style="margin-top:1rem">Corpo do email</div>
+    <button class="copy-btn" onclick="copyText('e4')">Copiar texto</button>
+    <div class="email-text" id="e4">Oi, {{ contact.FIRSTNAME }}!
+
+Uma coisa que escuto muito antes de fecharmos: "mas vai ter muita reunião? Meu tempo é curto."
+
+A resposta é não.
+
+O processo inteiro é assim:
+
+1. Você me conta por email onde perde mais tempo (já fez isso!)
+2. Recebe uma proposta com valor fixo em até 24 horas
+3. Se fizer sentido, aprova e paga pelo link — sem burocracia
+4. A automação é entregue em até 7 dias úteis
+5. Você recebe um vídeo explicando como usar
+6. Tem 30 dias de suporte incluído, sem custo extra
+
+Sem videochamada obrigatória. Sem contrato de 12 meses. Sem surpresas no valor.
+
+Muitos clientes me contratam sem nunca ter falado comigo diretamente — tudo por email e mensagem.
+
+Amanhã você recebe minha proposta para o seu caso específico.
+
+—
+Agência FLUXIA
+Automação com IA para pequenos negócios</div>
+
+    <div class="tip">Objetivo: eliminar objeções antes que apareçam. "Sem reunião" é um diferencial enorme para o público que você quer atingir — reforce isso com clareza.</div>
+  </div>
+</div>
+
+<!-- EMAIL 5 -->
+<div class="email-card">
+  <div class="email-header">
+    <span class="email-title">Email 5 — Oferta</span>
+    <div class="email-meta">
+      <span class="pill pill-teal">7 dias depois</span>
+      <span class="pill pill-gray">Template: Email 5 - Oferta</span>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="subject">Assunto do email</div>
+    <div class="subject-line">{{ contact.FIRSTNAME }}, sua proposta está aqui</div>
+
+    <div class="subject" style="margin-top:1rem">Corpo do email</div>
+    <button class="copy-btn" onclick="copyText('e5')">Copiar texto</button>
+    <div class="email-text" id="e5">Oi, {{ contact.FIRSTNAME }}!
+
+Com base no que você me contou — que atua em {{ contact.SEGMENTO }} e perde tempo com {{ contact.DOR }} — aqui está o que sugiro como primeiro passo:
+
+AUTOMAÇÃO INICIAL · R$ 997
+— Mapeamento do processo que mais toma seu tempo
+— Implementação da automação com IA
+— Entrega em até 7 dias úteis
+— Vídeo explicativo de uso (sem precisar de técnico)
+— 30 dias de suporte por WhatsApp incluído
+
+Se quiser avançar, é só clicar no botão abaixo:
+
+→ [ QUERO COMEÇAR ]
+[ Cole aqui o link do Hotmart ]
+
+Essa proposta é válida por 5 dias.
+
+Se tiver alguma dúvida antes de decidir, pode responder esse email diretamente — responderei em até 24 horas.
+
+—
+Agência FLUXIA
+Automação com IA para pequenos negócios
+
+P.S. Se esse momento não for o ideal, sem problema. Guardo seu contato e quando precisar pode me chamar.</div>
+
+    <div class="tip">Objetivo: fechar. Use o {{ contact.SEGMENTO }} e {{ contact.DOR }} para personalizar automaticamente — o Brevo substitui pelas respostas que o lead deu no Tally. Antes de ativar o workflow, crie o produto no Hotmart e cole o link no lugar indicado.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<p style="font-size:12px;color:#7a7773;text-align:center;line-height:1.6">
+  Agência FLUXIA · Sequência de 5 emails · 7 dias<br>
+  Após inserir todos os textos no Brevo, conecte o Tally via integração nativa e ative o workflow.
+</p>
+
+</div>
+<script>
+function copyText(id) {
+  const el = document.getElementById(id);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btns = document.querySelectorAll('.copy-btn');
+    btns.forEach(b => {
+      if(b.getAttribute('onclick').includes(id)) {
+        const orig = b.textContent;
+        b.textContent = 'Copiado!';
+        b.style.background = '#1D9E75';
+        b.style.color = '#fff';
+        setTimeout(() => { b.textContent = orig; b.style.background = ''; b.style.color = ''; }, 2000);
+      }
+    });
+  });
+}
+</script>
+</body>
+</html>

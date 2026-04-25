@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Post 6 — Oferta de Lançamento · Fluxia Business</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #1a1a1a; display: flex; flex-direction: column; align-items: center; padding: 2rem; gap: 2rem; }
+  .instructions { color: #666; font-size: 13px; text-align: center; background: #1a1a1a; padding: .75rem 1.5rem; border-radius: 8px; border: 1px solid #2a2a2a; }
+  .slide { width: 1080px; height: 1080px; background: #0f1a14; position: relative; overflow: hidden; }
+  .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(29,158,117,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(29,158,117,0.05) 1px, transparent 1px); background-size: 90px 90px; }
+  .accent-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #1D9E75; }
+  .top-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: #1D9E75; }
+  .logo { position: absolute; top: 60px; left: 80px; font-size: 13px; font-weight: 500; letter-spacing: 0.2em; color: #1D9E75; text-transform: uppercase; }
+  .slide-num { position: absolute; top: 60px; right: 80px; font-size: 13px; color: #2a3d2e; letter-spacing: 0.1em; }
+  .bottom-line { position: absolute; bottom: 80px; left: 80px; right: 80px; height: 1px; background: rgba(29,158,117,0.2); }
+  .bottom-tag { position: absolute; bottom: 55px; left: 80px; font-size: 11px; letter-spacing: 0.15em; color: #2a4a32; text-transform: uppercase; }
+
+  /* SLIDE 1 — GANCHO */
+  .s1-content { position: absolute; top: 50%; left: 80px; right: 80px; transform: translateY(-52%); }
+  .s1-badge { display: inline-block; background: #1D9E75; color: #0f1a14; font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 8px 20px; margin-bottom: 2.5rem; }
+  .s1-title { font-family: 'DM Serif Display', serif; font-size: 88px; line-height: 1.0; color: #f7f4ef; letter-spacing: -0.02em; margin-bottom: 2.5rem; }
+  .s1-title em { font-style: italic; color: #1D9E75; }
+  .s1-sub { font-size: 26px; font-weight: 300; color: #8a9e90; line-height: 1.5; }
+
+  /* SLIDE 2 — PROBLEMA */
+  .s2-content { position: absolute; top: 140px; left: 80px; right: 80px; }
+  .s2-title { font-family: 'DM Serif Display', serif; font-size: 52px; color: #f7f4ef; line-height: 1.2; margin-bottom: 3rem; }
+  .s2-item { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 2rem; }
+  .s2-dot { width: 8px; height: 8px; border-radius: 50%; background: #3a5a40; flex-shrink: 0; margin-top: 12px; }
+  .s2-text { font-size: 28px; font-weight: 300; color: #6a8e72; line-height: 1.4; }
+  .s2-conclusion { margin-top: 3rem; padding: 2rem; border: 1px solid rgba(29,158,117,0.2); }
+  .s2-conclusion-text { font-family: 'DM Serif Display', serif; font-size: 36px; color: #f7f4ef; line-height: 1.3; font-style: italic; }
+
+  /* SLIDE 3 — OFERTA */
+  .s3-content { position: absolute; top: 130px; left: 80px; right: 80px; }
+  .s3-badge { display: inline-block; background: rgba(29,158,117,0.15); color: #1D9E75; font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 8px 20px; margin-bottom: 2rem; }
+  .s3-title { font-family: 'DM Serif Display', serif; font-size: 56px; color: #f7f4ef; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 2.5rem; }
+  .s3-price-box { padding: 2.5rem; background: rgba(29,158,117,0.08); border: 1px solid rgba(29,158,117,0.25); margin-bottom: 2rem; }
+  .s3-price-label { font-size: 13px; font-weight: 500; letter-spacing: 0.15em; color: #1D9E75; text-transform: uppercase; margin-bottom: 1rem; }
+  .s3-price-old { font-size: 28px; color: #3a5a40; text-decoration: line-through; margin-bottom: .5rem; }
+  .s3-price-new { font-family: 'DM Serif Display', serif; font-size: 96px; color: #1D9E75; line-height: 1; letter-spacing: -0.03em; }
+  .s3-price-period { font-size: 22px; color: #2a7a52; font-weight: 300; margin-top: .5rem; }
+  .s3-includes { display: flex; flex-direction: column; gap: .75rem; }
+  .s3-include { display: flex; align-items: center; gap: 12px; font-size: 20px; color: #6a9e72; font-weight: 300; }
+  .s3-check { color: #1D9E75; font-weight: 500; flex-shrink: 0; }
+
+  /* SLIDE 4 — GARANTIAS */
+  .s4-content { position: absolute; top: 50%; left: 80px; right: 80px; transform: translateY(-52%); }
+  .s4-title { font-family: 'DM Serif Display', serif; font-size: 62px; color: #f7f4ef; line-height: 1.1; margin-bottom: 3rem; }
+  .s4-title em { font-style: italic; color: #1D9E75; }
+  .s4-items { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .s4-item { padding: 1.75rem; background: rgba(29,158,117,0.05); border: 1px solid rgba(29,158,117,0.12); }
+  .s4-item-title { font-size: 22px; font-weight: 500; color: #1D9E75; margin-bottom: .5rem; }
+  .s4-item-desc { font-size: 18px; font-weight: 300; color: #6a8e72; line-height: 1.4; }
+
+  /* SLIDE 5 — CTA FINAL */
+  .s5-content { position: absolute; top: 50%; left: 80px; right: 80px; transform: translateY(-50%); text-align: center; }
+  .s5-urgency { font-size: 14px; font-weight: 500; letter-spacing: 0.15em; color: #1D9E75; text-transform: uppercase; margin-bottom: 2rem; }
+  .s5-title { font-family: 'DM Serif Display', serif; font-size: 80px; color: #f7f4ef; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 2rem; }
+  .s5-title em { font-style: italic; color: #1D9E75; }
+  .s5-price { font-family: 'DM Serif Display', serif; font-size: 52px; color: #1D9E75; margin-bottom: 2.5rem; }
+  .s5-price s { color: #3a5a40; font-size: 32px; }
+  .s5-cta { display: inline-block; background: #1D9E75; color: #0f1a14; font-size: 20px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 1.5rem 3.5rem; margin-bottom: 1.5rem; }
+  .s5-url { font-size: 16px; color: #2a4a32; }
+</style>
+</head>
+<body>
+<div class="instructions">Post 6 — Oferta de Lançamento · 5 slides · Tire print de cada slide</div>
+
+<!-- SLIDE 1 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">01 / 05</div>
+  <div class="s1-content">
+    <div class="s1-badge">Fase de lançamento</div>
+    <div class="s1-title">Condição <em>especial</em> para os primeiros clientes.</div>
+    <div class="s1-sub">Deslize para ver o que está incluído e o preço de lançamento.</div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">02 / 05</div>
+  <div class="s2-content">
+    <div class="s2-title">Você ainda perde tempo com isso?</div>
+    <div class="s2-item"><div class="s2-dot"></div><div class="s2-text">Responder as mesmas perguntas no WhatsApp todo dia</div></div>
+    <div class="s2-item"><div class="s2-dot"></div><div class="s2-text">Criar conteúdo para redes sociais do zero toda semana</div></div>
+    <div class="s2-item"><div class="s2-dot"></div><div class="s2-text">Montar relatórios e planilhas manualmente todo mês</div></div>
+    <div class="s2-conclusion"><div class="s2-conclusion-text">"Tudo isso pode ser automático — e você já deveria ter feito isso."</div></div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">03 / 05</div>
+  <div class="s3-content">
+    <div class="s3-badge">Automação Inicial · Fluxia Business</div>
+    <div class="s3-title">Implementação completa com IA no seu negócio</div>
+    <div class="s3-price-box">
+      <div class="s3-price-label">Preço de lançamento</div>
+      <div class="s3-price-old">R$ 1.497</div>
+      <div class="s3-price-new">R$997</div>
+      <div class="s3-price-period">pagamento único · sem mensalidade</div>
+    </div>
+    <div class="s3-includes">
+      <div class="s3-include"><span class="s3-check">✓</span>Mapeamento do processo mais crítico</div>
+      <div class="s3-include"><span class="s3-check">✓</span>Implementação completa em 7 dias</div>
+      <div class="s3-include"><span class="s3-check">✓</span>Vídeo explicativo de uso incluído</div>
+      <div class="s3-include"><span class="s3-check">✓</span>30 dias de suporte por WhatsApp</div>
+    </div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">04 / 05</div>
+  <div class="s4-content">
+    <div class="s4-title">Sem <em>nenhuma</em> complicação.</div>
+    <div class="s4-items">
+      <div class="s4-item"><div class="s4-item-title">Sem reunião</div><div class="s4-item-desc">Tudo por formulário e email. Seu tempo é seu.</div></div>
+      <div class="s4-item"><div class="s4-item-title">Sem contrato</div><div class="s4-item-desc">Pagamento único. Sem fidelidade obrigatória.</div></div>
+      <div class="s4-item"><div class="s4-item-title">Sem surpresa</div><div class="s4-item-desc">Valor fixo combinado antes de começar.</div></div>
+      <div class="s4-item"><div class="s4-item-title">Sem técnico</div><div class="s4-item-desc">Vídeo explicativo incluso. Você usa sozinha.</div></div>
+    </div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">05 / 05</div>
+  <div class="s5-content">
+    <div class="s5-urgency">Vagas limitadas para esse preço</div>
+    <div class="s5-title">Comece a <em>recuperar</em> seu tempo.</div>
+    <div class="s5-price"><s>R$ 1.497</s> → R$ 997</div>
+    <div class="s5-cta">Link na bio 👆</div>
+    <div class="s5-url">fluxiabusiness.netlify.app</div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+</body>
+</html>

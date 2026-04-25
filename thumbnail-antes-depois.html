@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Thumbnail — Antes x Depois · Fluxia Business</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 1rem;
+  }
+  .instructions {
+    color: #666;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    text-align: center;
+    background: #1a1a1a;
+    padding: .75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #2a2a2a;
+  }
+  .thumb {
+    width: 1080px;
+    height: 1080px;
+    background: #0f1a14;
+    position: relative;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* Grid sutil */
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(29,158,117,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(29,158,117,0.05) 1px, transparent 1px);
+    background-size: 90px 90px;
+  }
+
+  /* Divisor central vertical */
+  .divider-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #1D9E75 20%, #1D9E75 80%, transparent);
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+
+  /* VS badge central */
+  .vs-badge {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: #0f1a14;
+    border: 2px solid #1D9E75;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: #1D9E75;
+    z-index: 20;
+    letter-spacing: 0.05em;
+  }
+
+  /* Lado esquerdo — ANTES */
+  .side-before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(139,60,40,0.04);
+  }
+  .label-before {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #7a3a2a;
+  }
+  .time-before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-65%);
+    text-align: center;
+  }
+  .time-num-before {
+    font-family: 'DM Serif Display', serif;
+    font-size: 130px;
+    line-height: 1;
+    color: #3a1a10;
+    letter-spacing: -0.04em;
+  }
+  .time-unit-before {
+    font-size: 28px;
+    font-weight: 300;
+    color: #5a2a1a;
+    letter-spacing: 0.05em;
+    margin-top: .5rem;
+  }
+  .time-desc-before {
+    font-size: 18px;
+    font-weight: 300;
+    color: #4a2a1a;
+    margin-top: 1.5rem;
+    line-height: 1.4;
+  }
+
+  /* Tarefas manuais */
+  .tasks {
+    position: absolute;
+    bottom: 160px;
+    left: 40px;
+    right: 40px;
+  }
+  .task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: .6rem 0;
+    border-bottom: 1px solid rgba(139,60,40,0.1);
+    font-size: 18px;
+    color: #3a1a10;
+    font-weight: 300;
+  }
+  .task-dot { width: 6px; height: 6px; border-radius: 50%; background: #7a3a2a; flex-shrink: 0; }
+
+  /* Lado direito — DEPOIS */
+  .side-after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(29,158,117,0.04);
+  }
+  .label-after {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #1D9E75;
+  }
+  .time-after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-65%);
+    text-align: center;
+  }
+  .time-num-after {
+    font-family: 'DM Serif Display', serif;
+    font-size: 130px;
+    line-height: 1;
+    color: #1D9E75;
+    letter-spacing: -0.04em;
+  }
+  .time-unit-after {
+    font-size: 28px;
+    font-weight: 300;
+    color: #2a7a52;
+    letter-spacing: 0.05em;
+    margin-top: .5rem;
+  }
+  .time-desc-after {
+    font-size: 18px;
+    font-weight: 300;
+    color: #1a5a3a;
+    margin-top: 1.5rem;
+    line-height: 1.4;
+  }
+
+  /* Benefícios */
+  .benefits {
+    position: absolute;
+    bottom: 160px;
+    left: 40px;
+    right: 40px;
+  }
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: .6rem 0;
+    border-bottom: 1px solid rgba(29,158,117,0.1);
+    font-size: 18px;
+    color: #1a5a3a;
+    font-weight: 300;
+  }
+  .benefit-dot { width: 6px; height: 6px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; }
+
+  /* Logo topo */
+  .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-top: 62px;
+    z-index: 5;
+  }
+
+  /* Rodapé */
+  .footer {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #1D9E75;
+    z-index: 5;
+  }
+
+  /* Barra topo verde */
+  .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #1D9E75;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<div class="instructions">Tire um print desta thumbnail (1080×1080px) para usar como capa do Reels no Instagram</div>
+
+<div class="thumb">
+  <div class="grid"></div>
+  <div class="top-bar"></div>
+  <div class="divider-line"></div>
+  <div class="vs-badge">VS</div>
+
+  <!-- ANTES -->
+  <div class="side-before">
+    <div class="label-before">Antes</div>
+    <div class="time-before">
+      <div class="time-num-before">2h</div>
+      <div class="time-unit-before">por dia</div>
+      <div class="time-desc-before">criando posts<br>manualmente</div>
+    </div>
+    <div class="tasks">
+      <div class="task-item"><div class="task-dot"></div>Pensar no tema</div>
+      <div class="task-item"><div class="task-dot"></div>Escrever a legenda</div>
+      <div class="task-item"><div class="task-dot"></div>Editar a imagem</div>
+      <div class="task-item"><div class="task-dot"></div>Programar o post</div>
+    </div>
+  </div>
+
+  <!-- DEPOIS -->
+  <div class="side-after">
+    <div class="label-after">Depois</div>
+    <div class="time-after">
+      <div class="time-num-after">20min</div>
+      <div class="time-unit-after">por semana</div>
+      <div class="time-desc-after">tudo automático<br>com IA</div>
+    </div>
+    <div class="benefits">
+      <div class="benefit-item"><div class="benefit-dot"></div>IA gera os textos</div>
+      <div class="benefit-item"><div class="benefit-dot"></div>Sistema agenda tudo</div>
+      <div class="benefit-item"><div class="benefit-dot"></div>Conteúdo consistente</div>
+      <div class="benefit-item"><div class="benefit-dot"></div>Zero esforço manual</div>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <div class="footer">Fluxia Business · Automação com IA · fluxiabusiness.netlify.app</div>
+</div>
+
+</body>
+</html>

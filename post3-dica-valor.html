@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Post 3 — Dica de Valor · Fluxia Business</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #1a1a1a; display: flex; flex-direction: column; align-items: center; padding: 2rem; gap: 2rem; }
+  .instructions { color: #666; font-size: 13px; text-align: center; background: #1a1a1a; padding: .75rem 1.5rem; border-radius: 8px; border: 1px solid #2a2a2a; }
+  .slide { width: 1080px; height: 1080px; background: #0f1a14; position: relative; overflow: hidden; }
+  .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(29,158,117,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(29,158,117,0.05) 1px, transparent 1px); background-size: 90px 90px; }
+  .accent-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #1D9E75; }
+  .top-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: #1D9E75; }
+  .logo { position: absolute; top: 60px; left: 80px; font-size: 13px; font-weight: 500; letter-spacing: 0.2em; color: #1D9E75; text-transform: uppercase; }
+  .slide-num { position: absolute; top: 60px; right: 80px; font-size: 13px; color: #2a3d2e; letter-spacing: 0.1em; }
+  .bottom-line { position: absolute; bottom: 80px; left: 80px; right: 80px; height: 1px; background: rgba(29,158,117,0.2); }
+  .bottom-tag { position: absolute; bottom: 55px; left: 80px; font-size: 11px; letter-spacing: 0.15em; color: #2a4a32; text-transform: uppercase; }
+
+  /* SLIDE 1 — CAPA */
+  .s1-content { position: absolute; top: 50%; left: 80px; right: 80px; transform: translateY(-55%); }
+  .s1-badge { display: inline-block; background: rgba(29,158,117,0.15); color: #1D9E75; font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 8px 20px; margin-bottom: 2rem; }
+  .s1-title { font-family: 'DM Serif Display', serif; font-size: 92px; line-height: 1.0; color: #f7f4ef; letter-spacing: -0.02em; margin-bottom: 2rem; }
+  .s1-title em { font-style: italic; color: #1D9E75; }
+  .s1-sub { font-size: 24px; font-weight: 300; color: #8a9e90; line-height: 1.5; }
+  .s1-hint { position: absolute; bottom: 120px; right: 80px; font-size: 14px; color: #2a4a32; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* SLIDE 2, 3, 4 — TAREFAS */
+  .task-content { position: absolute; top: 140px; left: 80px; right: 80px; }
+  .task-number { font-family: 'DM Serif Display', serif; font-size: 140px; line-height: 1; color: rgba(29,158,117,0.08); position: absolute; right: 60px; top: 100px; }
+  .task-eyebrow { font-size: 13px; font-weight: 500; letter-spacing: 0.2em; color: #1D9E75; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .task-title { font-family: 'DM Serif Display', serif; font-size: 68px; color: #f7f4ef; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 2.5rem; }
+  .task-title em { font-style: italic; color: #1D9E75; }
+  .task-desc { font-size: 26px; font-weight: 300; color: #8a9e90; line-height: 1.6; margin-bottom: 2.5rem; max-width: 800px; }
+  .task-tool { display: inline-flex; align-items: center; gap: 12px; background: rgba(29,158,117,0.1); border: 1px solid rgba(29,158,117,0.2); padding: 12px 24px; }
+  .task-tool-label { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: #4a6e52; text-transform: uppercase; }
+  .task-tool-name { font-size: 18px; font-weight: 500; color: #1D9E75; }
+  .task-result { margin-top: 2.5rem; padding: 2rem; background: rgba(29,158,117,0.05); border-left: 3px solid #1D9E75; }
+  .task-result-label { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; color: #1D9E75; text-transform: uppercase; margin-bottom: .5rem; }
+  .task-result-text { font-size: 22px; color: #c8d8cc; font-weight: 300; }
+
+  /* SLIDE 5 — CTA */
+  .s5-content { position: absolute; top: 50%; left: 80px; right: 80px; transform: translateY(-50%); text-align: center; }
+  .s5-eyebrow { font-size: 13px; font-weight: 500; letter-spacing: 0.2em; color: #1D9E75; text-transform: uppercase; margin-bottom: 2rem; }
+  .s5-title { font-family: 'DM Serif Display', serif; font-size: 72px; color: #f7f4ef; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 2rem; }
+  .s5-title em { font-style: italic; color: #1D9E75; }
+  .s5-sub { font-size: 24px; font-weight: 300; color: #8a9e90; margin-bottom: 3.5rem; line-height: 1.5; }
+  .s5-cta { display: inline-block; background: #1D9E75; color: #0f1a14; font-size: 18px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 1.25rem 3rem; }
+  .s5-save { margin-top: 2rem; font-size: 16px; color: #2a4a32; }
+</style>
+</head>
+<body>
+<div class="instructions">Post 3 — Dica de Valor · 5 slides · Tire print de cada slide</div>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div>
+  <div class="slide-num">01 / 05</div>
+  <div class="s1-content">
+    <div class="s1-badge">Dica de valor</div>
+    <div class="s1-title"><em>3 tarefas</em> que você faz na mão — e não deveria.</div>
+    <div class="s1-sub">Nenhuma delas exige saber programar.</div>
+  </div>
+  <div class="s1-hint">Deslize para ver →</div>
+  <div class="bottom-line"></div>
+  <div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 2 — TAREFA 1 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div>
+  <div class="slide-num">02 / 05</div>
+  <div class="task-number">01</div>
+  <div class="task-content">
+    <div class="task-eyebrow">Tarefa 1 de 3</div>
+    <div class="task-title">Respostas no <em>WhatsApp</em></div>
+    <div class="task-desc">Responder "qual o horário?", "tem vaga?" e "quanto custa?" consome horas do seu dia — e é sempre a mesma resposta.</div>
+    <div class="task-tool">
+      <div>
+        <div class="task-tool-label">Ferramentas</div>
+        <div class="task-tool-name">Typebot + Make.com + GPT</div>
+      </div>
+    </div>
+    <div class="task-result">
+      <div class="task-result-label">Resultado</div>
+      <div class="task-result-text">Chatbot responde, qualifica e agenda — sem você tocar em nada.</div>
+    </div>
+  </div>
+  <div class="bottom-line"></div>
+  <div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 3 — TAREFA 2 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div>
+  <div class="slide-num">03 / 05</div>
+  <div class="task-number">02</div>
+  <div class="task-content">
+    <div class="task-eyebrow">Tarefa 2 de 3</div>
+    <div class="task-title">Conteúdo para <em>redes sociais</em></div>
+    <div class="task-desc">Pensar no tema, escrever a legenda, escolher a imagem e programar o post — todo dia, toda semana, sem parar.</div>
+    <div class="task-tool">
+      <div>
+        <div class="task-tool-label">Ferramentas</div>
+        <div class="task-tool-name">ChatGPT + Canva IA + Buffer</div>
+      </div>
+    </div>
+    <div class="task-result">
+      <div class="task-result-label">Resultado</div>
+      <div class="task-result-text">30 posts gerados, criados e agendados em 20 minutos por semana.</div>
+    </div>
+  </div>
+  <div class="bottom-line"></div>
+  <div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 4 — TAREFA 3 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div>
+  <div class="slide-num">04 / 05</div>
+  <div class="task-number">03</div>
+  <div class="task-content">
+    <div class="task-eyebrow">Tarefa 3 de 3</div>
+    <div class="task-title">Relatórios e <em>planilhas</em></div>
+    <div class="task-desc">Montar relatório mensal, consolidar dados de várias fontes e enviar para cada cliente consome dias inteiros de trabalho.</div>
+    <div class="task-tool">
+      <div>
+        <div class="task-tool-label">Ferramentas</div>
+        <div class="task-tool-name">Make.com + Google Sheets + GPT</div>
+      </div>
+    </div>
+    <div class="task-result">
+      <div class="task-result-label">Resultado</div>
+      <div class="task-result-text">Dados coletados, análise gerada e PDF enviado automaticamente.</div>
+    </div>
+  </div>
+  <div class="bottom-line"></div>
+  <div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 5 — CTA -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div>
+  <div class="slide-num">05 / 05</div>
+  <div class="s5-content">
+    <div class="s5-eyebrow">Salva esse post 🔖</div>
+    <div class="s5-title">Qual dessas tarefas <em>toma mais</em> o seu tempo?</div>
+    <div class="s5-sub">Comenta aqui embaixo — e veja no link da bio como automatizar no seu negócio.</div>
+    <div class="s5-cta">Ver como funciona →</div>
+    <div class="s5-save">fluxiabusiness.netlify.app</div>
+  </div>
+  <div class="bottom-line"></div>
+  <div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+</body>
+</html>

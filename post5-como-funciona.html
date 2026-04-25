@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Post 5 — Como Funciona · Fluxia Business</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #1a1a1a; display: flex; flex-direction: column; align-items: center; padding: 2rem; gap: 2rem; }
+  .instructions { color: #666; font-size: 13px; text-align: center; background: #1a1a1a; padding: .75rem 1.5rem; border-radius: 8px; border: 1px solid #2a2a2a; }
+  .slide { width: 1080px; height: 1080px; background: #0f1a14; position: relative; overflow: hidden; }
+  .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(29,158,117,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(29,158,117,0.05) 1px, transparent 1px); background-size: 90px 90px; }
+  .accent-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #1D9E75; }
+  .top-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: #1D9E75; }
+  .logo { position: absolute; top: 60px; left: 80px; font-size: 13px; font-weight: 500; letter-spacing: 0.2em; color: #1D9E75; text-transform: uppercase; }
+  .slide-num { position: absolute; top: 60px; right: 80px; font-size: 13px; color: #2a3d2e; letter-spacing: 0.1em; }
+  .bottom-line { position: absolute; bottom: 80px; left: 80px; right: 80px; height: 1px; background: rgba(29,158,117,0.2); }
+  .bottom-tag { position: absolute; bottom: 55px; left: 80px; font-size: 11px; letter-spacing: 0.15em; color: #2a4a32; text-transform: uppercase; }
+
+  /* SLIDE 1 — GANCHO */
+  .s1-content { position: absolute; top: 50%; left: 80px; right: 80px; transform: translateY(-52%); }
+  .s1-question { font-family: 'DM Serif Display', serif; font-size: 72px; color: #f7f4ef; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 2.5rem; font-style: italic; }
+  .s1-answer { font-size: 28px; font-weight: 300; color: #8a9e90; line-height: 1.5; margin-bottom: 2rem; }
+  .s1-answer strong { color: #1D9E75; font-weight: 500; }
+  .s1-hint { font-size: 16px; color: #2a4a32; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* SLIDES DE PASSO */
+  .step-content { position: absolute; top: 130px; left: 80px; right: 80px; }
+  .step-num-big { font-family: 'DM Serif Display', serif; font-size: 200px; line-height: 1; color: rgba(29,158,117,0.07); position: absolute; right: 40px; top: 80px; letter-spacing: -0.04em; }
+  .step-badge { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 2rem; }
+  .step-badge-num { width: 44px; height: 44px; border-radius: 50%; background: #1D9E75; display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 20px; color: #0f1a14; }
+  .step-badge-label { font-size: 13px; font-weight: 500; letter-spacing: 0.15em; color: #1D9E75; text-transform: uppercase; }
+  .step-title { font-family: 'DM Serif Display', serif; font-size: 68px; color: #f7f4ef; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 2rem; }
+  .step-title em { font-style: italic; color: #1D9E75; }
+  .step-desc { font-size: 26px; font-weight: 300; color: #8a9e90; line-height: 1.6; max-width: 800px; margin-bottom: 2.5rem; }
+  .step-detail { background: rgba(29,158,117,0.06); border-left: 3px solid #1D9E75; padding: 1.5rem 2rem; }
+  .step-detail-text { font-size: 20px; color: #6a9e72; font-weight: 300; }
+  .step-detail-text strong { color: #1D9E75; font-weight: 500; }
+
+  /* SLIDE 6 — CTA */
+  .s6-content { position: absolute; top: 50%; left: 80px; right: 80px; transform: translateY(-50%); text-align: center; }
+  .s6-title { font-family: 'DM Serif Display', serif; font-size: 72px; color: #f7f4ef; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 2rem; }
+  .s6-title em { font-style: italic; color: #1D9E75; }
+  .s6-sub { font-size: 24px; font-weight: 300; color: #8a9e90; margin-bottom: 3.5rem; line-height: 1.5; }
+  .s6-cta { display: inline-block; background: #1D9E75; color: #0f1a14; font-size: 18px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 1.25rem 3rem; }
+  .s6-url { margin-top: 2rem; font-size: 16px; color: #2a4a32; }
+</style>
+</head>
+<body>
+<div class="instructions">Post 5 — Como Funciona · 6 slides · Tire print de cada slide</div>
+
+<!-- SLIDE 1 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">01 / 06</div>
+  <div class="s1-content">
+    <div class="s1-question">"Como funciona sem ter uma reunião?"</div>
+    <div class="s1-answer">É a pergunta que mais recebo. A resposta é simples — e o processo inteiro cabe em <strong>4 passos.</strong></div>
+    <div class="s1-hint">Deslize para ver →</div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 2 — PASSO 1 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">02 / 06</div>
+  <div class="step-num-big">1</div>
+  <div class="step-content">
+    <div class="step-badge"><div class="step-badge-num">1</div><span class="step-badge-label">Primeiro passo</span></div>
+    <div class="step-title">Você preenche o <em>formulário</em></div>
+    <div class="step-desc">Conta em que segmento atua e qual a sua maior dor operacional. Leva menos de 3 minutos.</div>
+    <div class="step-detail"><div class="step-detail-text"><strong>Sem ligação. Sem videochamada.</strong> Só o formulário.</div></div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 3 — PASSO 2 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">03 / 06</div>
+  <div class="step-num-big">2</div>
+  <div class="step-content">
+    <div class="step-badge"><div class="step-badge-num">2</div><span class="step-badge-label">Segundo passo</span></div>
+    <div class="step-title">Você recebe a <em>proposta</em> por email</div>
+    <div class="step-desc">Com o que pode ser automatizado, tempo estimado de economia e o investimento. Claro, sem letras miúdas.</div>
+    <div class="step-detail"><div class="step-detail-text">Entregue em <strong>até 24 horas</strong> após o formulário.</div></div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 4 — PASSO 3 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">04 / 06</div>
+  <div class="step-num-big">3</div>
+  <div class="step-content">
+    <div class="step-badge"><div class="step-badge-num">3</div><span class="step-badge-label">Terceiro passo</span></div>
+    <div class="step-title">Aprovação e <em>pagamento</em> online</div>
+    <div class="step-desc">Se fizer sentido, você aprova e paga pelo link. Sem burocracia, sem contrato longo, sem risco.</div>
+    <div class="step-detail"><div class="step-detail-text">Link seguro via <strong>Kiwify</strong> — cartão, boleto ou Pix.</div></div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 5 — PASSO 4 -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">05 / 06</div>
+  <div class="step-num-big">4</div>
+  <div class="step-content">
+    <div class="step-badge"><div class="step-badge-num">4</div><span class="step-badge-label">Quarto passo</span></div>
+    <div class="step-title">Entrega em <em>7 dias</em></div>
+    <div class="step-desc">A automação está no ar, você recebe o guia de uso em vídeo e tem 30 dias de suporte incluído.</div>
+    <div class="step-detail"><div class="step-detail-text"><strong>Suporte por 30 dias</strong> incluído sem custo extra.</div></div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide">
+  <div class="grid"></div><div class="accent-bar"></div><div class="top-bar"></div>
+  <div class="logo">Fluxia Business</div><div class="slide-num">06 / 06</div>
+  <div class="s6-content">
+    <div class="s6-title">Simples assim. <em>Sem reunião.</em></div>
+    <div class="s6-sub">Do formulário até a automação funcionando em 7 dias. Clique no link da bio para começar.</div>
+    <div class="s6-cta">Quero começar →</div>
+    <div class="s6-url">fluxiabusiness.netlify.app</div>
+  </div>
+  <div class="bottom-line"></div><div class="bottom-tag">fluxiabusiness.netlify.app</div>
+</div>
+</body>
+</html>
