@@ -8,9 +8,11 @@
 
 A **Fluxia Business** é uma agência de automação com IA criada para resolver um problema real: pequenos negócios perdem em média **48 horas por mês** em tarefas repetitivas que podem ser automatizadas.
 
-Este repositório documenta toda a arquitetura técnica e as decisões de projeto tomadas para construir um **funil de vendas 100% automatizado**, desde a captação do lead até o pagamento — sem intervenção humana.
+Este repositório documenta toda a arquitetura técnica e as decisões de projeto tomadas para construir um **funil de vendas 100% automatizado**, desde a captação do lead até o pagamento e entrega — sem intervenção humana.
 
 **Site ao vivo:** [fluxiabusiness.netlify.app](https://fluxiabusiness.netlify.app)
+**Instagram:** [@fluxia_business](https://instagram.com/fluxia_business)
+**LinkedIn:** [Fluxia Business](https://linkedin.com/company/fluxia-business)
 
 ---
 
@@ -19,7 +21,8 @@ Este repositório documenta toda a arquitetura técnica e as decisões de projet
 ### 1. Landing Page
 - HTML/CSS puro, responsivo, sem frameworks
 - Design editorial com identidade visual consistente
-- Seção de preços com 3 pacotes (Starter, Pro, Full)
+- 3 pacotes de preço — Starter R$997, Pro R$2.500, Full R$4.500
+- Formulário de captação integrado via Tally.so
 - Hospedagem gratuita via **Netlify**
 
 ### 2. Funil de Captação Automático
@@ -40,17 +43,36 @@ Este repositório documenta toda a arquitetura técnica e as decisões de projet
   - Pro: R$ 2.500 (3 automações)
   - Full: R$ 4.500 (5 automações + suporte estendido)
 - Checkout com cartão, boleto e Pix
+- Recorrência mensal: R$ 500–800/mês
 
-### 5. Chatbot com IA (Instagram Direct)
+### 5. Chatbot com IA — Instagram Direct
 - Fluxo conversacional construído no **Typebot**
 - Integração com **OpenAI GPT-4o mini** via API
-- 4 fluxos: Serviços, Preços, Falar com equipe, Outros assuntos
-- Resposta automática configurada no Meta Business Suite
+- 4 fluxos principais:
+  - Serviços — apresentação completa
+  - Preços — 3 pacotes com valores
+  - Falar com a equipe — redirecionamento para landing page
+  - Outros assuntos — resposta livre com IA
+- Resposta automática configurada no **Meta Business Suite**
+- Link do Typebot enviado automaticamente no primeiro contato
 
-### 6. Presença Digital
+### 6. Onboarding Automático Pós-Venda
+- Webhook da Kiwify → Make.com
+- Email automático com link do formulário de briefing
+- Formulário de briefing personalizado no **Tally.so**:
+  - Nome e segmento do negócio
+  - 5 serviços principais
+  - Diferencial competitivo
+  - Cliente ideal
+  - Tom de comunicação
+  - Materiais visuais
+
+### 7. Presença Digital
 - Instagram: [@fluxia_business](https://instagram.com/fluxia_business)
 - LinkedIn: [Fluxia Business](https://linkedin.com/company/fluxia-business)
-- Calendário de 6 posts criados e programados
+- Calendário de conteúdo — 19 posts planejados para abril/maio 2026
+- Posts criados em HTML com design consistente e identidade visual
+- Reels com roteiros prontos para CapCut
 
 ---
 
@@ -60,34 +82,42 @@ Este repositório documenta toda a arquitetura técnica e as decisões de projet
 |---|---|---|
 | Frontend | HTML/CSS puro | Landing page |
 | Hospedagem | Netlify | Deploy gratuito |
-| Formulário | Tally.so | Captação de leads |
+| Formulário leads | Tally.so | Captação de leads |
+| Formulário briefing | Tally.so | Onboarding de clientes |
 | Automação | Make.com | Integração entre ferramentas |
 | Email | Brevo | Sequência automática de emails |
-| Chatbot | Typebot | Fluxo conversacional |
-| IA | OpenAI GPT-4o mini | Respostas inteligentes |
+| Chatbot | Typebot | Fluxo conversacional Instagram Direct |
+| IA | OpenAI GPT-4o mini | Respostas inteligentes no chatbot |
 | Pagamento | Kiwify | Checkout e gestão de produtos |
-| Social | Meta Business Suite | Automação de respostas |
+| Social | Meta Business Suite | Automação de respostas e agendamento |
+| Versionamento | GitHub | Documentação e portfólio |
 
 ---
 
-## 🔄 Arquitetura do Funil
+## 🔄 Arquitetura Completa do Sistema
 
 ```
-Visitante
-    ↓
-Landing Page (Netlify)
-    ↓
-Formulário (Tally.so)
-    ↓
-Make.com [webhook]
-    ↓
-Lista de contatos (Brevo)
-    ↓
-Workflow automático → 5 emails em 7 dias
-    ↓
-Email 5: Proposta + Link de pagamento (Kiwify)
-    ↓
-Cliente paga → Entrega do serviço
+CAPTAÇÃO
+Visitante → Landing Page (Netlify)
+         → Formulário (Tally.so)
+         → Make.com [webhook]
+         → Lista de contatos (Brevo)
+         → Workflow automático → 5 emails em 7 dias
+         → Email 5: Proposta + Link de pagamento (Kiwify)
+
+VENDA
+Cliente paga (Kiwify)
+         → Webhook → Make.com
+         → Email automático com link do briefing
+         → Cliente preenche briefing (Tally.so)
+         → Produção e entrega em 7 dias
+
+ATENDIMENTO
+Mensagem no Instagram Direct
+         → Auto reply (Meta Business Suite)
+         → Link do Typebot
+         → Chatbot com IA (Typebot + GPT-4o mini)
+         → Qualificação → Redirecionamento para landing page
 ```
 
 ---
@@ -103,22 +133,25 @@ Cliente paga → Entrega do serviço
 
 ---
 
-## 💡 Aprendizados e Decisões Técnicas
+## 💡 Decisões Técnicas
 
 ### Por que HTML puro em vez de React ou Next.js?
-A landing page foi construída em HTML/CSS puro para maximizar a velocidade de carregamento e simplicidade de deploy. Para uma página de conversão, performance é crítica — cada segundo a mais reduz a taxa de conversão em ~7%.
+Performance é crítica para páginas de conversão. HTML/CSS puro carrega mais rápido, sem dependências, e é trivial de hospedar gratuitamente.
 
 ### Por que Make.com em vez de Zapier?
-O Make.com oferece 1.000 operações gratuitas por mês contra 100 do Zapier. Para o volume inicial, Make é suficiente e gratuito.
+1.000 operações gratuitas por mês vs 100 do Zapier. Para o volume inicial, Make é suficiente e gratuito.
 
 ### Por que Brevo em vez de Mailchimp?
-O Brevo permite automações completas no plano gratuito. O Mailchimp restringe automações para planos pagos.
+Automações completas no plano gratuito. Mailchimp restringe automações para planos pagos.
 
 ### Por que Kiwify em vez de Hotmart?
 Interface mais simples, checkout mais limpo e taxa similar (~9,99% por venda).
 
 ### Por que GPT-4o mini em vez de GPT-4o?
-Custo ~10x menor com qualidade suficiente para atendimento conversacional básico. Para o volume inicial, a economia é significativa.
+Custo ~10x menor com qualidade suficiente para atendimento conversacional. Para o volume inicial, a economia é significativa.
+
+### Por que Typebot em vez de ManyChat?
+Typebot é gratuito, open source e integra nativamente com OpenAI. ManyChat cobra por contatos.
 
 ---
 
@@ -128,18 +161,27 @@ Custo ~10x menor com qualidade suficiente para atendimento conversacional básic
 fluxia-business/
 │
 ├── landing-page/
-│   └── index.html          # Landing page completa
+│   └── landing-fluxia-v3.html     # Landing page completa com 3 pacotes
 │
 ├── emails/
-│   └── sequencia-brevo.html # 5 emails da sequência
+│   └── emails-brevo-fluxia.html   # 5 emails da sequência automática
 │
 ├── posts/
-│   ├── post1-apresentacao.html
 │   ├── post2-case-clinica.html
 │   ├── post3-dica-valor.html
 │   ├── post4-prova-social.html
 │   ├── post5-como-funciona.html
-│   └── post6-oferta-lancamento.html
+│   ├── post6-oferta-lancamento.html
+│   ├── reels-post2-frames.html
+│   └── thumbnail-antes-depois.html
+│
+├── identidade-visual/
+│   ├── perfil-instagram-fluxia.svg
+│   ├── banner-linkedin-v2.html
+│   └── imagem-produto-fluxia-business.svg
+│
+├── planejamento/
+│   └── calendario-maio-2026.md    # 19 posts planejados
 │
 └── README.md
 ```
@@ -156,6 +198,8 @@ Este projeto demonstra na prática:
 - Aplicação de LLMs (Large Language Models) em produto real
 - Construção de funil de vendas orientado a dados
 - Design e desenvolvimento frontend
+- Arquitetura de sistemas de atendimento automatizado
+- Estratégia de conteúdo e marketing digital
 
 ---
 
