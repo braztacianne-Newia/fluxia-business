@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <circle cx="200" cy="200" r="200" fill="#0f1a14"/>
+  <circle cx="200" cy="200" r="200" fill="#0f1a14"/>
+
+  <!-- Círculos decorativos -->
+  <circle cx="200" cy="200" r="160" fill="none" stroke="#1D9E75" stroke-width="0.8" opacity="0.2"/>
+  <circle cx="200" cy="200" r="130" fill="none" stroke="#1D9E75" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Letra F estilizada centralizada -->
+  <rect x="148" y="120" width="48" height="5" fill="#1D9E75"/>
+  <rect x="148" y="120" width="5" height="90" fill="#1D9E75"/>
+  <rect x="148" y="162" width="36" height="5" fill="#1D9E75"/>
+
+  <!-- Ponto verde decorativo -->
+  <circle cx="230" cy="165" r="6" fill="#1D9E75" opacity="0.6"/>
+  <circle cx="248" cy="148" r="4" fill="#1D9E75" opacity="0.35"/>
+  <circle cx="245" cy="178" r="3" fill="#1D9E75" opacity="0.25"/>
+
+  <!-- Nome -->
+  <text x="200" y="248" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#f7f4ef" text-anchor="middle" letter-spacing="6">FLUXIA</text>
+  <text x="200" y="272" font-family="Arial, sans-serif" font-size="13" font-weight="400" fill="#9FE1CB" text-anchor="middle" letter-spacing="5">BUSINESS</text>
+
+  <!-- Linha decorativa -->
+  <line x1="140" y1="288" x2="260" y2="288" stroke="#1D9E75" stroke-width="0.8" opacity="0.5"/>
+  <text x="200" y="308" font-family="Arial, sans-serif" font-size="10" fill="#3a5040" text-anchor="middle" letter-spacing="2">AUTOMAÇÃO COM IA</text>
+</svg>

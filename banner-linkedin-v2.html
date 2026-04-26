@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Banner LinkedIn Otimizado · Fluxia Business</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #111; display: flex; flex-direction: column; align-items: center; padding: 2rem; gap: 1rem; font-family: 'DM Sans', sans-serif; }
+  .instructions { color: #888; font-size: 13px; text-align: center; background: #1a1a1a; padding: .75rem 1.5rem; border-radius: 8px; border: 1px solid #2a2a2a; max-width: 700px; line-height: 1.6; }
+  .instructions strong { color: #9FE1CB; }
+
+  /* Tamanho exato recomendado pelo LinkedIn: 1128x191px */
+  .banner {
+    width: 1128px;
+    height: 191px;
+    background: #0f1a14;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(29,158,117,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(29,158,117,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .accent { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #1D9E75; }
+  .top-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #1D9E75; }
+
+  /* Círculos decorativos lado direito */
+  .circle1 { position: absolute; right: -40px; top: 50%; transform: translateY(-50%); width: 280px; height: 280px; border-radius: 50%; border: 1px solid rgba(29,158,117,0.1); }
+  .circle2 { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); width: 180px; height: 180px; border-radius: 50%; border: 1px solid rgba(29,158,117,0.07); }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .left { flex: 1; }
+
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: #1D9E75;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    line-height: 1.15;
+    color: #f7f4ef;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  .title em { font-style: italic; color: #1D9E75; }
+
+  .subtitle {
+    font-size: 13px;
+    font-weight: 300;
+    color: #6a8e72;
+    line-height: 1.4;
+  }
+
+  .pills {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .pill {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1D9E75;
+    border: 1px solid rgba(29,158,117,0.3);
+    padding: 3px 10px;
+  }
+
+  .right {
+    text-align: center;
+    padding-right: 60px;
+    flex-shrink: 0;
+  }
+
+  .right-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    color: #1D9E75;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .right-label {
+    font-size: 10px;
+    font-weight: 300;
+    color: #3a6a42;
+    margin-top: 2px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .divider {
+    width: 1px;
+    height: 80px;
+    background: rgba(29,158,117,0.15);
+    flex-shrink: 0;
+  }
+
+  .url {
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: #2a4a32;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="instructions">
+  <strong>Banner LinkedIn · 1128 × 191px (tamanho exato)</strong><br>
+  Abra no Chrome zoom 100%, tire print recortando só o banner. Upload em "Editar página" → "Foto de capa".
+</div>
+
+<div class="banner">
+  <div class="grid"></div>
+  <div class="accent"></div>
+  <div class="top-bar"></div>
+  <div class="circle1"></div>
+  <div class="circle2"></div>
+
+  <div class="content">
+    <div class="left">
+      <div class="eyebrow">Automação com IA · São Paulo</div>
+      <div class="title">Seu negócio pode rodar<br><em>3 horas mais leve</em> por dia.</div>
+      <div class="subtitle">Atendimento, conteúdo e processos automatizados — entrega em 7 dias, sem reunião.</div>
+      <div class="pills">
+        <span class="pill">Chatbot WhatsApp</span>
+        <span class="pill">Conteúdo com IA</span>
+        <span class="pill">Automação de processos</span>
+        <span class="pill">Entrega em 7 dias</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="right">
+      <div class="right-num">7</div>
+      <div class="right-label">dias para entregar</div>
+    </div>
+  </div>
+
+  <div class="url">fluxiabusiness.netlify.app</div>
+</div>
+
+</body>
+</html>
