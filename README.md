@@ -1,12 +1,12 @@
-# Fluxia Business — Growth Hacking para Salões e Clínicas
+# Fluxia Business — Growth Hacking para Salões, Clínicas e pequenos negócios
 
-Projeto real de Growth Hacking e automação digital para salões de beleza e clínicas de estética, desenvolvido do zero em menos de 30 dias.
+Projeto real de Growth Hacking e automação digital para salões de beleza, clínicas de estética e pequenos negócios, desenvolvido do zero em menos de 30 dias.
 
 ---
 
 ## 📌 Sobre o Projeto
 
-A Fluxia Business é uma consultoria especializada em crescimento digital para salões de beleza e clínicas de estética. Utilizamos estratégias de **Growth Hacking** para estruturar funil de captação, anúncios no Meta Ads, automação de atendimento com IA e acompanhamento de resultados em tempo real.
+A Fluxia Business é uma consultoria especializada em crescimento digital para salões de beleza, clínicas de estética e pequenos negócios. Utilizamos estratégias de **Growth Hacking** para estruturar funil de captação, anúncios no Meta Ads, automação de atendimento com IA e acompanhamento de resultados em tempo real.
 
 A dor que resolvemos: donos de salões e clínicas perdem em média 48 horas por mês em tarefas repetitivas e ficam invisíveis no digital — sem funil, sem automação, sem estrutura.
 
