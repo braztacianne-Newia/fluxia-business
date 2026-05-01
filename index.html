@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluxia Business — Growth Hacking para Salões, Clínicas de Estética e Pequenos Negócios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0d;
+    --ink2: #3a3835;
+    --ink3: #7a7773;
+    --cream: #f7f4ef;
+    --cream2: #ede9e2;
+    --accent: #1a7a52;
+    --accent-light: #d6ede3;
+    --accent2: #b85c1a;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 2.5rem;
+    background: rgba(247,244,239,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--cream2);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--accent);
+    padding-bottom: 1px;
+    transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: .65; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    padding: 6rem 3rem 5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--cream2);
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px; height: 1px;
+    background: var(--ink3);
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.75rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--ink2);
+    max-width: 400px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta-group { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+  .hero-proof {
+    font-size: 0.8rem;
+    color: var(--ink3);
+  }
+  .hero-right {
+    padding: 6rem 2.5rem 5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .stat-block {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--cream2);
+  }
+  .stat-block:first-child { border-top: 1px solid var(--cream2); }
+  .stat-n {
+    font-family: var(--serif);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+  .stat-n span { color: var(--accent); }
+  .stat-l {
+    font-size: 0.85rem;
+    color: var(--ink3);
+    font-weight: 300;
+    max-width: 280px;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--cream2);
+    border-bottom: 1px solid var(--cream2);
+    background: var(--cream2);
+    padding: 0.875rem 0;
+  }
+  .marquee-inner {
+    display: flex;
+    gap: 3rem;
+    width: max-content;
+    animation: marquee 22s linear infinite;
+  }
+  .marquee-item {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .marquee-item::after { content: '·'; color: var(--accent); }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── COMO FUNCIONA ── */
+  .section { padding: 6rem 2.5rem; }
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid var(--cream2);
+    padding-bottom: 2rem;
+  }
+  .section-num {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    color: var(--ink3);
+    padding-top: 6px;
+    min-width: 32px;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  h2 em { font-style: italic; color: var(--accent); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .step {
+    padding: 2rem 1.75rem;
+    border-right: 1px solid var(--cream2);
+    position: relative;
+  }
+  .step:last-child { border-right: none; }
+  .step-badge {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 3px 9px;
+    display: inline-block;
+    margin-bottom: 1.25rem;
+  }
+  .step h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+  .step p {
+    font-size: 0.875rem;
+    color: var(--ink3);
+    font-weight: 300;
+    line-height: 1.65;
+  }
+  .step-tool {
+    margin-top: 1.25rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    border-top: 1px solid var(--cream2);
+    padding-top: 1rem;
+  }
+
+  /* ── CASES ── */
+  .cases-section { background: var(--ink); padding: 6rem 2.5rem; }
+  .cases-section .section-num { color: #5a5855; }
+  .cases-section h2 { color: var(--cream); }
+  .cases-section h2 em { color: #6ecfa0; }
+  .cases-section .section-header { border-bottom-color: #2a2825; }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #2a2825;
+  }
+  .case-card {
+    background: var(--ink);
+    padding: 2.5rem 2rem;
+  }
+  .case-tag {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6ecfa0;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .case-card h3 {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+  .case-metric {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    padding: 1.25rem 0;
+    border-top: 1px solid #2a2825;
+    border-bottom: 1px solid #2a2825;
+  }
+  .case-m {
+    flex: 1;
+  }
+  .case-m-n {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+  .case-m-n.before { color: #8a6a55; }
+  .case-m-n.after  { color: #6ecfa0; }
+  .case-m-l { font-size: 0.72rem; color: #5a5855; text-transform: uppercase; letter-spacing: 0.06em; }
+  .case-desc {
+    font-size: 0.85rem;
+    color: #8a8885;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .case-tools {
+    display: flex; gap: 6px; flex-wrap: wrap; margin-top: 1.25rem;
+  }
+  .case-tool {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #5a5855;
+    border: 1px solid #2a2825;
+    padding: 3px 8px;
+  }
+
+  /* ── SERVIÇOS ── */
+  .services-section { padding: 6rem 2.5rem; border-bottom: 1px solid var(--cream2); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--cream2);
+    border: 1px solid var(--cream2);
+    margin-top: 3rem;
+  }
+  .service-item {
+    background: var(--cream);
+    padding: 2.25rem 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .service-arrow {
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .service-item h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+  }
+  .service-item p {
+    font-size: 0.875rem;
+    color: var(--ink3);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── CTA / FORM ── */
+  .form-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+  }
+  .form-left {
+    background: var(--accent);
+    padding: 6rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .form-left h2 {
+    color: var(--cream);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    margin-bottom: 1.5rem;
+  }
+  .form-left h2 em { font-style: italic; color: var(--accent-light); }
+  .form-left p {
+    color: rgba(247,244,239,0.75);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+  }
+  .form-promise {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .form-promise-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: rgba(247,244,239,0.8);
+    font-weight: 300;
+  }
+  .form-promise-item::before {
+    content: '✓';
+    color: var(--accent-light);
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .form-right {
+    background: var(--cream);
+    padding: 6rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .form-right h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .form-right p {
+    font-size: 0.85rem;
+    color: var(--ink3);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 0.4rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid var(--cream2);
+    padding: 0.6rem 0;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 300;
+    outline: none;
+    transition: border-color .2s;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-bottom-color: var(--accent); }
+  .form-group select { cursor: pointer; background: transparent; }
+  .form-group textarea { resize: none; min-height: 80px; }
+  .btn-submit {
+    display: block;
+    width: 100%;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1.75rem;
+    transition: background .2s;
+  }
+  .btn-submit:hover { background: var(--accent); }
+  .form-note {
+    font-size: 0.75rem;
+    color: var(--ink3);
+    text-align: center;
+    margin-top: 0.75rem;
+    font-weight: 300;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--cream2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .footer-note {
+    font-size: 0.78rem;
+    color: var(--ink3);
+    font-weight: 300;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.25rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 5rem 1.5rem 3rem; border-right: none; border-bottom: 1px solid var(--cream2); }
+    .hero-right { padding: 2.5rem 1.5rem 4rem; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .step { border-bottom: 1px solid var(--cream2); }
+    .step:nth-child(even) { border-right: none; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .form-section { grid-template-columns: 1fr; }
+    .form-left { padding: 4rem 1.5rem; }
+    .form-right { padding: 4rem 1.5rem; }
+    .section { padding: 4rem 1.5rem; }
+    .cases-section { padding: 4rem 1.5rem; }
+  }
+  @media (max-width: 600px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .step:nth-child(even) { border-right: none; }
+    h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Fluxia Business</a>
+  <a href="#formulario" class="nav-cta">Quero começar</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left fade-up">
+    <p class="hero-eyebrow">Growth Hacking para salões, clínicas de estética e pequenos negócios</p>
+    <h1>Mais clientes todo mês. <em>Com sistema,</em> não com sorte.</h1>
+    <p class="hero-sub">Estruturo o crescimento digital do seu salão, clínica de estética ou pequeno negócio — funil de captação, anúncios, automação e acompanhamento de resultados. Tudo funcionando enquanto você atende.</p>
+    <div class="hero-cta-group">
+      <a href="#formulario" class="btn-primary">Quero ver como →</a>
+      <span class="hero-proof">Sem reunião, sem compromisso</span>
+    </div>
+  </div>
+  <div class="hero-right fade-up" style="transition-delay:.15s">
+    <div class="stat-block">
+      <div class="stat-n"><span>−90%</span></div>
+      <div class="stat-l">de tempo gasto criando conteúdo para redes sociais</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-n"><span>3×</span></div>
+      <div class="stat-l">mais leads qualificados com atendimento automatizado</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-n"><span>7 dias</span></div>
+      <div class="stat-l">da contratação até a automação funcionando</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span class="marquee-item">Conteúdo com IA</span>
+    <span class="marquee-item">Chatbot no WhatsApp</span>
+    <span class="marquee-item">Relatórios automáticos</span>
+    <span class="marquee-item">Agendamento inteligente</span>
+    <span class="marquee-item">Respostas automáticas</span>
+    <span class="marquee-item">Follow-up automático</span>
+    <span class="marquee-item">Conteúdo com IA</span>
+    <span class="marquee-item">Chatbot no WhatsApp</span>
+    <span class="marquee-item">Relatórios automáticos</span>
+    <span class="marquee-item">Agendamento inteligente</span>
+    <span class="marquee-item">Respostas automáticas</span>
+    <span class="marquee-item">Follow-up automático</span>
+  </div>
+</div>
+
+<!-- COMO FUNCIONA -->
+<section class="section">
+  <div class="section-header fade-up">
+    <span class="section-num">01</span>
+    <h2>Como funciona — <em>sem reuniões,</em><br>sem complicação</h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step fade-up">
+      <span class="step-badge">Passo 1</span>
+      <h3>Você preenche o formulário</h3>
+      <p>Conta em que segmento atua e qual a sua maior dor operacional. Leva menos de 3 minutos.</p>
+      <div class="step-tool">Sem ligação · Sem videochamada</div>
+    </div>
+    <div class="step fade-up" style="transition-delay:.1s">
+      <span class="step-badge">Passo 2</span>
+      <h3>Você recebe uma proposta por email</h3>
+      <p>Com o que pode ser automatizado, tempo estimado de economia e o investimento. Tudo claro, sem letras miúdas.</p>
+      <div class="step-tool">Em até 24 horas</div>
+    </div>
+    <div class="step fade-up" style="transition-delay:.2s">
+      <span class="step-badge">Passo 3</span>
+      <h3>Aprovação e pagamento online</h3>
+      <p>Se fizer sentido, você aprova e paga pelo link. Sem burocracia, sem contrato longo, sem risco.</p>
+      <div class="step-tool">Link seguro · Hotmart</div>
+    </div>
+    <div class="step fade-up" style="transition-delay:.3s">
+      <span class="step-badge">Passo 4</span>
+      <h3>Entrega em 7 dias</h3>
+      <p>A automação está no ar, sua equipe recebe o guia de uso em vídeo e você tem 30 dias de suporte incluído.</p>
+      <div class="step-tool">Suporte por 30 dias · grátis</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases-section">
+  <div class="section-header fade-up">
+    <span class="section-num" style="color:#5a5855">02</span>
+    <h2 style="color:var(--cream)">Resultados <em>reais</em><br>para negócios reais</h2>
+  </div>
+  <div class="cases-grid">
+    <div class="case-card fade-up">
+      <span class="case-tag">Saúde e beleza · Clínica de estética</span>
+      <h3>Conteúdo para Instagram no piloto automático</h3>
+      <div class="case-metric">
+        <div class="case-m">
+          <div class="case-m-n before">2h/dia</div>
+          <div class="case-m-l">Antes</div>
+        </div>
+        <div class="case-m">
+          <div class="case-m-n after">20min/semana</div>
+          <div class="case-m-l">Depois</div>
+        </div>
+      </div>
+      <p class="case-desc">Calendário de 30 posts gerado, escrito e agendado automaticamente com base nos serviços da clínica.</p>
+      <div class="case-tools">
+        <span class="case-tool">ChatGPT</span>
+        <span class="case-tool">Canva IA</span>
+        <span class="case-tool">Buffer</span>
+      </div>
+    </div>
+    <div class="case-card fade-up" style="transition-delay:.1s">
+      <span class="case-tag">Imóveis · Imobiliária pequena</span>
+      <h3>Atendimento no WhatsApp que qualifica e agenda</h3>
+      <div class="case-metric">
+        <div class="case-m">
+          <div class="case-m-n before">4h/dia perdidas</div>
+          <div class="case-m-l">Antes</div>
+        </div>
+        <div class="case-m">
+          <div class="case-m-n after">Resposta em 8s</div>
+          <div class="case-m-l">Depois</div>
+        </div>
+      </div>
+      <p class="case-desc">Chatbot qualifica o lead, responde dúvidas comuns e agenda a visita — sem o corretor precisar parar o que está fazendo.</p>
+      <div class="case-tools">
+        <span class="case-tool">Make.com</span>
+        <span class="case-tool">Typebot</span>
+        <span class="case-tool">GPT-4o</span>
+      </div>
+    </div>
+    <div class="case-card fade-up" style="transition-delay:.2s">
+      <span class="case-tag">Serviços · Escritório de contabilidade</span>
+      <h3>Relatórios mensais gerados e enviados automaticamente</h3>
+      <div class="case-metric">
+        <div class="case-m">
+          <div class="case-m-n before">6h por cliente</div>
+          <div class="case-m-l">Antes</div>
+        </div>
+        <div class="case-m">
+          <div class="case-m-n after">30 minutos</div>
+          <div class="case-m-l">Depois</div>
+        </div>
+      </div>
+      <p class="case-desc">Dados importados da planilha, análise gerada com IA e PDF enviado por email para cada cliente — sem tocar em nada.</p>
+      <div class="case-tools">
+        <span class="case-tool">Make.com</span>
+        <span class="case-tool">ChatGPT</span>
+        <span class="case-tool">Google Sheets</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="services-section fade-up">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2>O que posso<br><em>automatizar</em> para você</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-item">
+      <span class="service-arrow">→</span>
+      <div>
+        <h3>Respostas no WhatsApp e Instagram</h3>
+        <p>Atendimento inicial, qualificação de leads e agendamentos sem precisar de atendente disponível 24h.</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-arrow">→</span>
+      <div>
+        <h3>Criação de conteúdo para redes sociais</h3>
+        <p>Calendário semanal de posts gerado, escrito e agendado automaticamente com base no seu negócio.</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-arrow">→</span>
+      <div>
+        <h3>Relatórios e planilhas automáticas</h3>
+        <p>Dados coletados, organizados e resumidos sem você precisar montar nada manualmente.</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-arrow">→</span>
+      <div>
+        <h3>Follow-up de clientes e leads</h3>
+        <p>Sequências de mensagens que acompanham o cliente automaticamente após o primeiro contato.</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-arrow">→</span>
+      <div>
+        <h3>Agendamentos e lembretes</h3>
+        <p>Sistema que agenda, confirma e envia lembretes para clientes sem intervenção humana.</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-arrow">→</span>
+      <div>
+        <h3>Processos internos repetitivos</h3>
+        <p>Qualquer tarefa que você faz do mesmo jeito toda semana pode ser automatizada — me conte qual é a sua.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- URGÊNCIA / DOR -->
+<section class="section" style="padding: 6rem 2.5rem; background: var(--ink); color: var(--cream);">
+  <div style="max-width: 860px; margin: 0 auto;" class="fade-up">
+    <span style="font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#6ecfa0;display:flex;align-items:center;gap:10px;margin-bottom:2rem;">
+      <span style="display:block;width:28px;height:1px;background:#6ecfa0;"></span>
+      A realidade do mercado hoje
+    </span>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);line-height:1.2;letter-spacing:-0.02em;color:var(--cream);margin-bottom:1.5rem;">
+      Enquanto você atende no WhatsApp, <em style="font-style:italic;color:#6ecfa0;">seu concorrente está sendo encontrado online.</em>
+    </h2>
+    <p style="font-size:1.05rem;font-weight:300;color:#8a8885;line-height:1.8;max-width:620px;margin-bottom:3rem;">
+      O comportamento do consumidor mudou. Quem não aparece no digital — com presença, atendimento rápido e conteúdo — simplesmente não existe para uma fatia crescente do mercado.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#2a2825;">
+      <div style="background:var(--ink);padding:2rem 1.5rem;">
+        <div style="font-family:var(--serif);font-size:2.8rem;color:#6ecfa0;line-height:1;margin-bottom:0.5rem;">88%</div>
+        <div style="font-size:0.85rem;font-weight:300;color:#8a8885;line-height:1.6;">dos brasileiros fizeram compras online todo mês em 2024 — e esse número cresce a cada ano.<br><span style="font-size:0.75rem;color:#5a5855;">Fonte: E-commerce Trends 2025 / Octadesk</span></div>
+      </div>
+      <div style="background:var(--ink);padding:2rem 1.5rem;">
+        <div style="font-family:var(--serif);font-size:2.8rem;color:#6ecfa0;line-height:1;margin-bottom:0.5rem;">72%</div>
+        <div style="font-size:0.85rem;font-weight:300;color:#8a8885;line-height:1.6;">dos consumidores pesquisam produtos e serviços nas redes sociais antes de decidir onde comprar.<br><span style="font-size:0.75rem;color:#5a5855;">Fonte: Sebrae / E-commerce Trends</span></div>
+      </div>
+      <div style="background:var(--ink);padding:2rem 1.5rem;">
+        <div style="font-family:var(--serif);font-size:2.8rem;color:#6ecfa0;line-height:1;margin-bottom:0.5rem;">29%</div>
+        <div style="font-size:0.85rem;font-weight:300;color:#8a8885;line-height:1.6;">dos negócios ainda operam sem nenhum canal digital — e perdem clientes para quem automatizou.<br><span style="font-size:0.75rem;color:#5a5855;">Fonte: FGV IBRE, 2024</span></div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;padding:1.75rem;border:1px solid #2a2825;background:#0a0a09;">
+      <p style="font-size:1rem;font-weight:300;color:#8a8885;line-height:1.8;margin:0;">
+        Para pequenos negócios que estão começando ou querem crescer, <strong style="color:var(--cream);font-weight:500;">a presença digital não é mais diferencial — é o piso mínimo.</strong> Quem chega atrasado paga mais caro para recuperar o terreno perdido.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PREÇOS -->
+<section class="section" id="precos" style="padding: 6rem 2.5rem; background: var(--cream);">
+  <div class="section-header fade-up">
+    <span class="section-num">04</span>
+    <h2>Escolha o pacote <em>ideal</em><br>para o seu negócio</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--cream2);border:1px solid var(--cream2);" class="fade-up">
+
+    <!-- STARTER -->
+    <div style="background:var(--cream);padding:2.5rem 2rem;display:flex;flex-direction:column;">
+      <div style="font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:1rem;">Starter</div>
+      <div style="font-family:var(--serif);font-size:2.8rem;color:var(--ink);letter-spacing:-0.02em;line-height:1;margin-bottom:0.35rem;">R$997</div>
+      <div style="font-size:0.8rem;color:var(--ink3);margin-bottom:1.5rem;font-weight:300;">pagamento único</div>
+      <div style="height:1px;background:var(--cream2);margin-bottom:1.5rem;"></div>
+      <div style="font-size:0.95rem;font-weight:500;color:var(--ink);margin-bottom:1rem;">1 automação completa</div>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;flex:1;">
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:var(--ink2);font-weight:300;"><span style="color:var(--accent);">✓</span>Chatbot WhatsApp ou Instagram</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:var(--ink2);font-weight:300;"><span style="color:var(--accent);">✓</span>Conteúdo para redes sociais</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:var(--ink2);font-weight:300;"><span style="color:var(--accent);">✓</span>Relatório automático mensal</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:var(--ink2);font-weight:300;"><span style="color:var(--accent);">✓</span>Entrega em 7 dias úteis</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:var(--ink2);font-weight:300;"><span style="color:var(--accent);">✓</span>30 dias de suporte incluído</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:var(--ink2);font-weight:300;"><span style="color:var(--accent);">✓</span>Vídeo explicativo de uso</div>
+      </div>
+      <a href="https://pay.kiwify.com.br/D8FmkU1" style="display:block;text-align:center;margin-top:2rem;padding:0.9rem;border:1.5px solid var(--ink);color:var(--ink);font-family:var(--sans);font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--ink)';this.style.color='var(--cream)'" onmouseout="this.style.background='transparent';this.style.color='var(--ink)'">Quero o Starter →</a>
+    </div>
+
+    <!-- PRO -->
+    <div style="background:var(--ink);padding:2.5rem 2rem;display:flex;flex-direction:column;position:relative;">
+      <div style="position:absolute;top:0;left:0;right:0;background:var(--accent);padding:6px;text-align:center;font-size:0.65rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream);">Mais popular</div>
+      <div style="font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#6ecfa0;margin-bottom:1rem;margin-top:1.5rem;">Pro</div>
+      <div style="font-family:var(--serif);font-size:2.8rem;color:var(--cream);letter-spacing:-0.02em;line-height:1;margin-bottom:0.35rem;">R$2.500</div>
+      <div style="font-size:0.8rem;color:#5a5855;margin-bottom:1.5rem;font-weight:300;">pagamento único</div>
+      <div style="height:1px;background:#2a2825;margin-bottom:1.5rem;"></div>
+      <div style="font-size:0.95rem;font-weight:500;color:var(--cream);margin-bottom:1rem;">3 automações integradas</div>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;flex:1;">
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:#8a8885;font-weight:300;"><span style="color:#6ecfa0;">✓</span>Chatbot WhatsApp + Instagram</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:#8a8885;font-weight:300;"><span style="color:#6ecfa0;">✓</span>Conteúdo para redes sociais</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:#8a8885;font-weight:300;"><span style="color:#6ecfa0;">✓</span>Follow-up automático de clientes</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:#8a8885;font-weight:300;"><span style="color:#6ecfa0;">✓</span>Entrega em 7 dias úteis</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:#8a8885;font-weight:300;"><span style="color:#6ecfa0;">✓</span>30 dias de suporte incluído</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:#8a8885;font-weight:300;"><span style="color:#6ecfa0;">✓</span>Vídeo explicativo de cada automação</div>
+      </div>
+      <a href="https://pay.kiwify.com.br/xtyBmKj" style="display:block;text-align:center;margin-top:2rem;padding:0.9rem;background:var(--accent);color:var(--cream);font-family:var(--sans);font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Quero o Pro →</a>
+    </div>
+
+    <!-- FULL -->
+    <div style="background:var(--cream);padding:2.5rem 2rem;display:flex;flex-direction:column;">
+      <div style="font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:1rem;">Full</div>
+      <div style="font-family:var(--serif);font-size:2.8rem;color:var(--ink);letter-spacing:-0.02em;line-height:1;margin-bottom:0.35rem;">R$4.500</div>
+      <div style="font-size:0.8rem;color:var(--ink3);margin-bottom:1.5rem;font-weight:300;">pagamento único</div>
+      <div style="height:1px;background:var(--cream2);margin-bottom:1.5rem;"></div>
+      <div style="font-size:0.95rem;font-weight:500;color:var(--ink);margin-bottom:1rem;">5 automações + suporte estendido</div>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;flex:1;">
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:var(--ink2);font-weight:300;"><span style="color:var(--accent);">✓</span>Chatbot WhatsApp + Instagram Direct</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:var(--ink2);font-weight:300;"><span style="color:var(--accent);">✓</span>Conteúdo para redes sociais</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:var(--ink2);font-weight:300;"><span style="color:var(--accent);">✓</span>Follow-up automático de clientes</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:var(--ink2);font-weight:300;"><span style="color:var(--accent);">✓</span>Relatório mensal automático</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:var(--ink2);font-weight:300;"><span style="color:var(--accent);">✓</span>Resposta automática Instagram Direct</div>
+        <div style="display:flex;gap:10px;font-size:0.85rem;color:var(--ink2);font-weight:300;"><span style="color:var(--accent);">✓</span>60 dias de suporte + 1 ajuste/mês</div>
+      </div>
+      <a href="https://pay.kiwify.com.br/froV6ni" style="display:block;text-align:center;margin-top:2rem;padding:0.9rem;border:1.5px solid var(--ink);color:var(--ink);font-family:var(--sans);font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--ink)';this.style.color='var(--cream)'" onmouseout="this.style.background='transparent';this.style.color='var(--ink)'">Quero o Full →</a>
+    </div>
+
+  </div>
+
+  <!-- Recorrência -->
+  <div style="margin-top:1px;background:var(--cream2);padding:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;" class="fade-up">
+    <div>
+      <div style="font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.35rem;">Manutenção mensal</div>
+      <div style="font-size:1.1rem;font-weight:500;color:var(--ink);">R$ 500 – R$ 800 <span style="font-size:0.85rem;font-weight:300;color:var(--ink3);">/ mês</span></div>
+      <div style="font-size:0.85rem;color:var(--ink3);margin-top:0.25rem;font-weight:300;">Monitoramento, ajustes e evolução das automações — para quem quer crescer continuamente.</div>
+    </div>
+    <a href="#formulario" style="display:inline-block;padding:0.75rem 1.75rem;border:1.5px solid var(--ink3);color:var(--ink3);font-family:var(--sans);font-size:0.78rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">Saiba mais →</a>
+  </div>
+</section>
+
+<!-- POR QUE CRIEI A FLUXIA -->
+<section class="section" id="sobre" style="padding: 6rem 2.5rem; background: var(--cream2);">
+  <div style="max-width: 680px; margin: 0 auto;" class="fade-up">
+    <span style="font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);display:flex;align-items:center;gap:10px;margin-bottom:2rem;">
+      <span style="display:block;width:28px;height:1px;background:var(--ink3);"></span>
+      Por que criei a Fluxia
+    </span>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.2;letter-spacing:-0.02em;color:var(--ink);margin-bottom:2rem;">
+      Vi de perto o que acontece quando um salão, clínica ou pequeno negócio tenta crescer <em style="font-style:italic;color:var(--accent);">sem estrutura.</em>
+    </h2>
+    <div style="display:flex;flex-direction:column;gap:1.25rem;font-size:1.05rem;font-weight:300;color:var(--ink2);line-height:1.8;">
+      <p>A dona do salão atende no WhatsApp, cria post, faz orçamento, confirma agendamento — tudo ao mesmo tempo. No fim do dia, trabalhou muito e o caixa não reflete o esforço.</p>
+      <p>Não é falta de dedicação. É falta de sistema.</p>
+      <p>A Fluxia nasceu pra mudar isso. Aplico Growth Hacking no seu negócio — monto o funil, configuro os anúncios, automatizo o atendimento e acompanho os números com você. Tudo funcionando, sem você precisar entender de tecnologia.</p>
+      <p style="font-weight:500;color:var(--ink);">Você foca em atender bem. O sistema traz o cliente.</p>
+    </div>
+    <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--cream);display:flex;align-items:center;gap:1rem;">
+      <div style="width:40px;height:40px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.1rem;color:var(--accent);flex-shrink:0;">N</div>
+      <div>
+        <div style="font-size:0.9rem;font-weight:500;color:var(--ink);">Nia — Fundadora, Fluxia Business</div>
+        <div style="font-size:0.8rem;color:var(--ink3);font-weight:300;">São Paulo · Growth Hacking para salões, clínicas de estética e pequenos negócios</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="form-section" id="formulario">
+  <div class="form-left fade-up">
+    <h2>Descubra o que <em>é possível</em> no seu negócio</h2>
+    <p>Preencha o formulário ao lado. Você recebe uma proposta personalizada por email em até 24 horas — sem reunião, sem ligação.</p>
+    <div class="form-promise">
+      <div class="form-promise-item">Sem reunião ou videochamada</div>
+      <div class="form-promise-item">Proposta clara com valor fixo</div>
+      <div class="form-promise-item">Entrega em até 7 dias úteis</div>
+      <div class="form-promise-item">30 dias de suporte incluído</div>
+      <div class="form-promise-item">Sem contrato de longo prazo</div>
+    </div>
+  </div>
+  <div class="form-right fade-up" style="transition-delay:.1s">
+    <h3>Fale sobre seu negócio</h3>
+    <p>Quanto mais detalhe, melhor a proposta que você recebe.</p>
+   <iframe data-tally-src="https://tally.so/embed/GxBdYp?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="639" frameborder="0" marginheight="0" marginwidth="0" title="Agência FLUXIA"></iframe>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Fluxia Business</span>
+  <span class="footer-note">São Paulo, Brasil · Atendimento 100% digital</span>
+</footer>
+
+<script>
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));</script>
+
+<!-- BOTÃO FLUTUANTE WHATSAPP -->
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .whatsapp-tooltip {
+    background: #1C1C1C;
+    color: #F0EDE6;
+    font-family: 'DM Sans', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 10px;
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border: 1px solid rgba(201,168,76,0.3);
+    animation: fadeInTooltip 0.4s ease forwards;
+    cursor: pointer;
+    position: relative;
+  }
+  .whatsapp-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 24px;
+    width: 12px;
+    height: 12px;
+    background: #1C1C1C;
+    border-right: 1px solid rgba(201,168,76,0.3);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    transform: rotate(45deg);
+  }
+  .whatsapp-btn {
+    width: 58px;
+    height: 58px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: pulse-whatsapp 2.5s infinite;
+  }
+  .whatsapp-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+  }
+  .whatsapp-btn svg { width: 30px; height: 30px; fill: white; }
+  .whatsapp-close {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 18px;
+    height: 18px;
+    background: #555;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 10px;
+    color: white;
+  }
+  @keyframes pulse-whatsapp {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 32px rgba(37,211,102,0.7); }
+  }
+  @keyframes fadeInTooltip {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 480px) {
+    .whatsapp-float { bottom: 18px; right: 18px; }
+    .whatsapp-btn { width: 52px; height: 52px; }
+  }
+</style>
+
+<div class="whatsapp-float">
+  <div class="whatsapp-tooltip" id="whatsappTooltip" onclick="window.open('https://wa.me/5511952928873?text=Oi!%20Vi%20a%20Fluxia%20Business%20e%20quero%20saber%20mais%20%F0%9F%9A%80', '_blank')">
+    💬 Fale comigo no WhatsApp
+    <span class="whatsapp-close" onclick="event.stopPropagation(); document.getElementById('whatsappTooltip').style.display='none'">✕</span>
+  </div>
+  <a href="https://wa.me/5511952928873?text=Oi!%20Vi%20a%20Fluxia%20Business%20e%20quero%20saber%20mais%20%F0%9F%9A%80"
+    target="_blank" class="whatsapp-btn" title="Fale comigo no WhatsApp"
+    onclick="document.getElementById('whatsappTooltip').style.display='none'">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  setTimeout(function() {
+    var t = document.getElementById('whatsappTooltip');
+    if (t) t.style.display = 'none';
+  }, 5000);
+</script>
+
+</body>
+</html>

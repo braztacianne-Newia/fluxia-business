@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório de Resultados — Fluxia Business</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--bg2:#101010;--bg3:#161616;--bg4:#1e1e1e;
+  --green:#1a7a52;--green2:#22a06b;--green3:#2ecc87;
+  --green-pale:rgba(46,204,135,0.12);--green-border:rgba(46,204,135,0.25);
+  --text:#f0ede6;--text2:#9b9790;--text3:#555250;
+  --border:rgba(255,255,255,0.06);--white:#ffffff;--gold:#C9A84C;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;min-height:100vh}
+.app{max-width:1100px;margin:0 auto;padding:0 24px 60px}
+.header{display:flex;align-items:center;justify-content:space-between;padding:32px 0 24px;border-bottom:1px solid var(--border);margin-bottom:32px;flex-wrap:wrap;gap:16px}
+.logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.5px;color:var(--white)}
+.logo em{color:var(--green3);font-style:normal}
+.logo-sub{font-size:10px;color:var(--text3);letter-spacing:2.5px;text-transform:uppercase;margin-top:4px}
+.client-name-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.client-label{font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase}
+.client-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--white)}
+.controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.period-tabs{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--bg3)}
+.ptab{padding:7px 16px;font-size:12px;font-family:'DM Sans',sans-serif;background:none;border:none;color:var(--text3);cursor:pointer;transition:all .2s}
+.ptab.active{background:var(--green);color:var(--white);font-weight:500}
+.live-badge{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--green3);background:var(--green-pale);border:1px solid var(--green-border);border-radius:20px;padding:5px 12px}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--green3);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.summary{background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid var(--green-border);border-radius:12px;padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.summary-text{font-size:13px;color:var(--text2);line-height:1.7;max-width:600px}
+.summary-text strong{color:var(--white);font-weight:500}
+.summary-period{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--green3);white-space:nowrap}
+.slabel{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--green2);font-weight:600;margin-bottom:12px}
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
+@media(max-width:900px){.kpi-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 16px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s;animation:fadeUp .5s ease both}
+.kpi:nth-child(1){animation-delay:.05s}.kpi:nth-child(2){animation-delay:.10s}.kpi:nth-child(3){animation-delay:.15s}.kpi:nth-child(4){animation-delay:.20s}.kpi:nth-child(5){animation-delay:.25s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.kpi:hover{border-color:var(--green-border);transform:translateY(-2px)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--green3),transparent);opacity:0;transition:opacity .3s}
+.kpi:hover::before{opacity:1}
+.kpi-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.kpi-icon{width:32px;height:32px;background:var(--bg4);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px}
+.badge{font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px}
+.badge.up{background:var(--green-pale);color:var(--green3)}
+.badge.down{background:rgba(240,110,110,0.12);color:#f06e6e}
+.kpi-label{font-size:11px;color:var(--text3);margin-bottom:6px}
+.kpi-val{font-family:'Syne',sans-serif;font-size:28px;font-weight:700;color:var(--white);line-height:1;margin-bottom:8px}
+.kpi-val.green{color:var(--green3)}
+.kpi-meta{font-size:10px;color:var(--text3)}
+.kpi-bar{height:2px;background:var(--bg4);border-radius:99px;margin-top:10px;overflow:hidden}
+.kpi-bar-fill{height:100%;border-radius:99px;background:var(--green);transition:width 1s}
+.row2{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:768px){.row2{grid-template-columns:1fr}}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px;animation:fadeUp .5s ease .3s both}
+.card-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:600;color:var(--white);margin-bottom:3px}
+.card-sub{font-size:11px;color:var(--text3);margin-bottom:18px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:24px}
+@media(max-width:768px){.row3{grid-template-columns:1fr}}
+.funnel{display:flex;flex-direction:column;gap:8px}
+.frow{display:grid;grid-template-columns:80px 1fr 40px;align-items:center;gap:8px}
+.flabel{font-size:10px;color:var(--text3);text-align:right}
+.ftrack{height:30px;background:var(--bg4);border-radius:6px;overflow:hidden}
+.ffill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:10px;font-weight:600;color:white;transition:width 1s}
+.fnum{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--white);text-align:right}
+.agenda-list{display:flex;flex-direction:column;gap:7px}
+.aitem{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border)}
+.adot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.ainfo{flex:1;min-width:0}
+.aname{font-size:12px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.asvc{font-size:10px;color:var(--text3);margin-top:1px}
+.aright{text-align:right;flex-shrink:0}
+.atime{font-size:10px;color:var(--text3)}
+.astatus{font-size:9px;font-weight:500;padding:2px 6px;border-radius:20px;margin-top:2px;display:inline-block}
+.s-ok{background:var(--green-pale);color:var(--green3)}
+.s-pend{background:rgba(245,158,11,0.12);color:#f59e0b}
+.s-done{background:var(--bg4);color:var(--text3)}
+.fat-list{display:flex;flex-direction:column;gap:13px}
+.fat-top{display:flex;justify-content:space-between;margin-bottom:5px}
+.fat-name{font-size:11px;color:var(--text2)}
+.fat-val{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;color:var(--white)}
+.fat-bg{height:3px;background:var(--bg4);border-radius:99px;overflow:hidden}
+.fat-fill{height:100%;border-radius:99px;transition:width 1.2s}
+.fat-pct{font-size:9px;color:var(--text3);margin-top:3px}
+.ch-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ch-leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text2)}
+.ch-leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.insight-box{background:var(--bg3);border:1px solid var(--green-border);border-left:3px solid var(--green3);border-radius:10px;padding:18px 22px;margin-bottom:24px}
+.insight-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--white);margin-bottom:10px}
+.insight-list{display:flex;flex-direction:column;gap:7px}
+.insight-item{font-size:12px;color:var(--text2);display:flex;align-items:flex-start;gap:8px;line-height:1.6}
+.insight-dot{width:5px;height:5px;border-radius:50%;background:var(--green3);margin-top:6px;flex-shrink:0}
+.footer{text-align:center;padding:24px 0 0;border-top:1px solid var(--border)}
+.footer-logo{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text3);margin-bottom:4px}
+.footer-logo em{color:var(--green);font-style:normal}
+.footer-sub{font-size:10px;color:var(--text3);letter-spacing:1px;margin-bottom:6px}
+.footer-contact{font-size:11px;color:var(--green3)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:2px}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header class="header">
+    <div>
+      <div class="logo">Fluxia<em>Business</em></div>
+      <div class="logo-sub">Relatório de Resultados</div>
+    </div>
+    <div class="client-name-wrap">
+      <div class="client-label">Cliente</div>
+      <div class="client-name" id="clientNameDisplay">—</div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="period-tabs">
+      <button class="ptab active" onclick="setPeriod(this,'7d')">7 dias</button>
+      <button class="ptab" onclick="setPeriod(this,'30d')">30 dias</button>
+      <button class="ptab" onclick="setPeriod(this,'90d')">90 dias</button>
+    </div>
+    <div class="live-badge"><div class="live-dot"></div>Atualizado em tempo real</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-text" id="summaryText">Carregando resumo...</div>
+    <div class="summary-period" id="summaryPeriod">Abril 2026</div>
+  </div>
+
+  <div class="slabel">Seus números</div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-top"><div class="kpi-icon">🎯</div><span class="badge up" id="b-leads">↑ —</span></div><div class="kpi-label">Leads Gerados</div><div class="kpi-val" id="v-leads">—</div><div class="kpi-meta" id="m-leads">Meta: —</div><div class="kpi-bar"><div class="kpi-bar-fill" id="bar-leads"></div></div></div>
+    <div class="kpi"><div class="kpi-top"><div class="kpi-icon">🔄</div><span class="badge up" id="b-conv">↑ —</span></div><div class="kpi-label">Taxa de Conversão</div><div class="kpi-val" id="v-conv">—</div><div class="kpi-meta" id="m-conv">Meta: —</div><div class="kpi-bar"><div class="kpi-bar-fill" id="bar-conv"></div></div></div>
+    <div class="kpi"><div class="kpi-top"><div class="kpi-icon">💸</div><span class="badge down" id="b-cpl">↓ —</span></div><div class="kpi-label">Custo por Lead</div><div class="kpi-val" id="v-cpl">—</div><div class="kpi-meta" id="m-cpl">Meta: —</div><div class="kpi-bar"><div class="kpi-bar-fill" id="bar-cpl" style="background:#f06e6e"></div></div></div>
+    <div class="kpi"><div class="kpi-top"><div class="kpi-icon">💰</div><span class="badge up" id="b-fat">↑ —</span></div><div class="kpi-label">Faturamento</div><div class="kpi-val green" id="v-fat">—</div><div class="kpi-meta" id="m-fat">Meta: —</div><div class="kpi-bar"><div class="kpi-bar-fill" id="bar-fat" style="background:#C9A84C"></div></div></div>
+    <div class="kpi"><div class="kpi-top"><div class="kpi-icon">📅</div><span class="badge up" id="b-agend">↑ —</span></div><div class="kpi-label">Agendamentos</div><div class="kpi-val" id="v-agend">—</div><div class="kpi-meta" id="m-agend">Meta: —</div><div class="kpi-bar"><div class="kpi-bar-fill" id="bar-agend"></div></div></div>
+  </div>
+
+  <div class="row2">
+    <div class="card">
+      <div class="card-title">Evolução de Leads</div>
+      <div class="card-sub" id="periodLabel">Últimos 7 dias</div>
+      <div style="position:relative;height:150px"><canvas id="leadsChart" role="img" aria-label="Evolução de leads"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Funil de Conversão</div>
+      <div class="card-sub">Do visitante ao cliente fechado</div>
+      <div class="funnel" id="funnelWrap"></div>
+    </div>
+  </div>
+
+  <div class="row3">
+    <div class="card" style="animation-delay:.4s">
+      <div class="card-title">Agendamentos</div>
+      <div class="card-sub">Próximos atendimentos</div>
+      <div class="agenda-list" id="agendaList"></div>
+    </div>
+    <div class="card" style="animation-delay:.45s">
+      <div class="card-title">Receita por Serviço</div>
+      <div class="card-sub">Distribuição no período</div>
+      <div class="fat-list" id="fatList"></div>
+    </div>
+    <div class="card" style="animation-delay:.5s">
+      <div class="card-title">De onde vêm seus clientes</div>
+      <div class="card-sub">Origem dos leads captados</div>
+      <div style="position:relative;height:130px"><canvas id="channelChart" role="img" aria-label="Canais de aquisição"></canvas></div>
+      <div class="ch-legend" id="chLegend"></div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-title">💡 Destaques do período</div>
+    <div class="insight-list" id="insightList"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">Fluxia<em>Business</em></div>
+    <div class="footer-sub">Growth Hacking para salões, clínicas de estética e pequenos negócios</div>
+    <div class="footer-contact">Dúvidas? Fale com a Nia → wa.me/5511952928873</div>
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// ═══════════════════════════════════════════════════════════════
+// CONFIGURAÇÃO — altere apenas aqui para cada cliente
+// ═══════════════════════════════════════════════════════════════
+const CLIENT_NAME = "Salão Piloto 01";
+const SHEETS_URL  = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTUthdKS-gTo-NYq_KhvYeUMoRc_MCzwrrO3YshEDsP9a8QXUAaMNcX1nTFVqQlaF6j7f2LQrnGc6Zg/pub?output=csv";
+const CLIENT_ROW  = 1; // 1 = linha 2 da planilha (primeira linha de dados)
+// ═══════════════════════════════════════════════════════════════
+
+const FUNNEL_COLORS=['#3b82f6','#2ecc87','#f59e0b','#a855f7'];
+const CHANNEL_COLORS=['#3b82f6','#2ecc87','#f59e0b','#a855f7','#ef4444'];
+
+const data = {
+  name: CLIENT_NAME,
+  kpis: {
+    leads:{val:48,delta:"+12",meta:60,metaStr:"60 leads",dir:"up"},
+    conv: {val:14,delta:"+3",meta:18,metaStr:"18%",dir:"up"},
+    cpl:  {val:4.2,delta:0.8,meta:5,metaStr:"R$5,00",dir:"down"},
+    fat:  {val:9400,delta:2100,meta:12000,metaStr:"R$12.000",dir:"up"},
+    agend:{val:37,delta:"+9",meta:50,metaStr:"50",dir:"up"},
+  },
+  chart:[6,4,8,5,9,7,9],
+  funnel:[
+    {label:"Visitantes",n:820,pct:100},
+    {label:"Leads",n:48,pct:59},
+    {label:"Contatos",n:22,pct:27},
+    {label:"Fechados",n:7,pct:9}
+  ],
+  agenda:[
+    {name:"Ana Paula",svc:"Coloração completa",time:"Hoje 14h",status:"ok"},
+    {name:"Carla M.",svc:"Corte + escova",time:"Hoje 16h",status:"ok"},
+    {name:"Fernanda R.",svc:"Manicure",time:"Amanhã 10h",status:"pend"},
+    {name:"Juliana T.",svc:"Hidratação capilar",time:"Amanhã 14h",status:"pend"},
+  ],
+  fat:[
+    {name:"Coloração",val:"R$3.800",pct:40,color:"#3b82f6"},
+    {name:"Corte & Escova",val:"R$2.500",pct:27,color:"#2ecc87"},
+    {name:"Manicure",val:"R$1.600",pct:17,color:"#f59e0b"},
+    {name:"Outros",val:"R$1.500",pct:16,color:"#a855f7"},
+  ],
+  channels:[
+    {label:"Instagram",pct:45},
+    {label:"Meta Ads",pct:30},
+    {label:"Workana",pct:15},
+    {label:"Indicação",pct:10},
+  ],
+  insights:[
+    "Seus leads cresceram 33% em relação ao período anterior — ótimo resultado da campanha no Instagram.",
+    "Taxa de conversão de 14% está acima da média do setor (10%). Continue com o atendimento rápido.",
+    "Custo por lead de R$4,20 abaixo da meta — os anúncios estão bem otimizados.",
+    "Faturamento a R$2.600 da meta mensal — mantenha o ritmo de agendamentos desta semana.",
+  ]
+};
+
+let period='7d', lChart=null, cChart=null;
+
+function render(){
+  document.getElementById('clientNameDisplay').textContent=data.name;
+  const k=data.kpis;
+  setKPI('leads', k.leads.val,   '+'+k.leads.delta,  k.leads.metaStr,  k.leads.dir,  false, k.leads.val/k.leads.meta*100);
+  setKPI('conv',  k.conv.val+'%','+'+k.conv.delta+'%',k.conv.metaStr,  k.conv.dir,   false, k.conv.val/k.conv.meta*100);
+  setKPI('cpl',   'R$'+k.cpl.val.toFixed(2).replace('.',','), '-R$'+k.cpl.delta.toFixed(1), k.cpl.metaStr, k.cpl.dir, true, 70);
+  setKPI('fat',   'R$'+k.fat.val.toLocaleString('pt-BR'), '+R$'+k.fat.delta.toLocaleString('pt-BR'), k.fat.metaStr, k.fat.dir, false, k.fat.val/k.fat.meta*100);
+  setKPI('agend', k.agend.val,   '+'+k.agend.delta,  k.agend.metaStr,  k.agend.dir,  false, k.agend.val/k.agend.meta*100);
+  document.getElementById('summaryText').innerHTML=
+    `No período selecionado, <strong>${data.name}</strong> gerou <strong>${k.leads.val} leads</strong> com taxa de conversão de <strong>${k.conv.val}%</strong> e faturamento de <strong>R$${k.fat.val.toLocaleString('pt-BR')}</strong>. Custo por lead médio: <strong>R$${k.cpl.val.toFixed(2).replace('.',',')}</strong>.`;
+  renderChart(data.chart);
+  renderFunnel(data.funnel);
+  renderAgenda(data.agenda);
+  renderFat(data.fat);
+  renderChannels(data.channels);
+  document.getElementById('insightList').innerHTML=data.insights.map(i=>`<div class="insight-item"><div class="insight-dot"></div><span>${i}</span></div>`).join('');
+}
+
+function setKPI(key,val,delta,meta,dir,invertGood,barPct){
+  document.getElementById('v-'+key).textContent=val;
+  document.getElementById('m-'+key).textContent='Meta: '+meta;
+  const b=document.getElementById('b-'+key);
+  const good=invertGood?dir==='down':dir==='up';
+  b.textContent=(dir==='up'?'↑':'↓')+' '+delta;
+  b.className='badge '+(good?'up':'down');
+  const bar=document.getElementById('bar-'+key);
+  if(bar) bar.style.width=Math.min(Math.round(barPct),100)+'%';
+}
+
+function renderChart(chartData){
+  const canvas=document.getElementById('leadsChart');
+  const l7=['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+  const l30=Array.from({length:chartData.length},(_,i)=>String(i+1));
+  const labels=period==='7d'?l7:l30;
+  const pm={'7d':'Últimos 7 dias','30d':'Últimos 30 dias','90d':'Últimos 90 dias'};
+  document.getElementById('periodLabel').textContent=pm[period];
+  if(lChart) lChart.destroy();
+  lChart=new Chart(canvas,{type:'line',data:{labels,datasets:[{data:chartData,borderColor:'#2ecc87',backgroundColor:'rgba(46,204,135,0.08)',fill:true,tension:0.4,pointBackgroundColor:'#080808',pointBorderColor:'#2ecc87',pointBorderWidth:2,pointRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:10,family:'DM Sans'},color:'#555250'}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{font:{size:10,family:'DM Sans'},color:'#555250'}}}}});
+}
+
+function renderFunnel(fData){
+  document.getElementById('funnelWrap').innerHTML=fData.map((f,i)=>`
+    <div class="frow">
+      <div class="flabel">${f.label}</div>
+      <div class="ftrack"><div class="ffill" style="width:${f.pct}%;background:${FUNNEL_COLORS[i]}">${f.pct>25?f.pct+'%':''}</div></div>
+      <div class="fnum">${f.n}</div>
+    </div>`).join('');
+}
+
+function renderAgenda(aData){
+  const sc={ok:'s-ok',pend:'s-pend',done:'s-done'};
+  const sl={ok:'Confirmado',pend:'Pendente',done:'Concluído'};
+  const dc={ok:'#2ecc87',pend:'#f59e0b',done:'#555250'};
+  document.getElementById('agendaList').innerHTML=aData.map(a=>`
+    <div class="aitem">
+      <div class="adot" style="background:${dc[a.status]}"></div>
+      <div class="ainfo"><div class="aname">${a.name}</div><div class="asvc">${a.svc}</div></div>
+      <div class="aright"><div class="atime">${a.time}</div><div class="astatus ${sc[a.status]}">${sl[a.status]}</div></div>
+    </div>`).join('');
+}
+
+function renderFat(fData){
+  document.getElementById('fatList').innerHTML=fData.map(f=>`
+    <div>
+      <div class="fat-top"><span class="fat-name">${f.name}</span><span class="fat-val">${f.val}</span></div>
+      <div class="fat-bg"><div class="fat-fill" style="width:${f.pct}%;background:${f.color}"></div></div>
+      <div class="fat-pct">${f.pct}% do total</div>
+    </div>`).join('');
+}
+
+function renderChannels(cData){
+  const canvas=document.getElementById('channelChart');
+  const colors=cData.map((_,i)=>CHANNEL_COLORS[i%CHANNEL_COLORS.length]);
+  if(cChart) cChart.destroy();
+  cChart=new Chart(canvas,{type:'doughnut',data:{labels:cData.map(d=>d.label),datasets:[{data:cData.map(d=>d.pct),backgroundColor:colors,borderWidth:2,borderColor:'#101010'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{display:false}}}});
+  document.getElementById('chLegend').innerHTML=cData.map((d,i)=>`<div class="ch-leg-item"><div class="ch-leg-dot" style="background:${colors[i]}"></div>${d.label} ${d.pct}%</div>`).join('');
+}
+
+function setPeriod(btn,p){
+  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');period=p;
+  if(p==='30d') data.chart=Array.from({length:30},()=>Math.floor(Math.random()*10+3));
+  else if(p==='90d') data.chart=Array.from({length:30},()=>Math.floor(Math.random()*14+4));
+  else data.chart=[6,4,8,5,9,7,9];
+  renderChart(data.chart);
+  const pm={'7d':'Últimos 7 dias','30d':'Últimos 30 dias','90d':'Últimos 90 dias'};
+  document.getElementById('summaryPeriod').textContent=pm[p];
+}
+
+async function loadFromSheets(){
+  try{
+    const res=await fetch(SHEETS_URL);
+    if(!res.ok) return;
+    const text=await res.text();
+    const rows=text.split('\n').map(r=>r.split(',').map(c=>c.trim().replace(/"/g,'')));
+    const row=rows[CLIENT_ROW];
+    if(!row||!row[0]) return;
+    if(row[0]) data.name=row[0];
+    if(row[1]) data.kpis.leads.val=parseInt(row[1])||data.kpis.leads.val;
+    if(row[2]) data.kpis.conv.val=parseFloat(row[2])||data.kpis.conv.val;
+    if(row[3]) data.kpis.cpl.val=parseFloat(row[3])||data.kpis.cpl.val;
+    if(row[4]) data.kpis.fat.val=parseInt(row[4])||data.kpis.fat.val;
+    if(row[5]) data.kpis.agend.val=parseInt(row[5])||data.kpis.agend.val;
+    render();
+  }catch(e){ console.log('Usando dados locais'); }
+}
+
+render();
+loadFromSheets();
+</script>
+</body>
+</html>
